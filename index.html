@@ -1,4 +1,5 @@
-
+<!--I have Idea for background, black with roses all over-->
+<!--put rest of webpage in a well and upon scroll well resizes to take whole size of browser -->
 
 <html>
     <head>
@@ -20,6 +21,22 @@
         <script>
             $(document).ready(function() {
                 $(" .carousel-control > .glyphicon ").css({"font-family": "bootstrap_font","color":"black"});
+                
+                function expand_at_point () {
+                    if($(window).scrollTop()  >= $("#body_page").offset().top - 5){
+                        $("#body_page").animate({
+                            height:$("body").css("height"),
+                            width:$("body").css("width"),
+                            "margin-top":"-544px"
+                            
+                            
+                        })
+                        $("#body_page").css("z-index","20");
+                    }
+                };
+                console.log($("#body_page").offset())
+                console.log($("body").offset().top)
+                $(window).scroll(expand_at_point);
             });
         </script>
     </head>
@@ -43,7 +60,7 @@
         <div class=" container well home_section" >
         
 
-<div class="container">
+            <div class="container">
   
   
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -89,8 +106,15 @@
 </div>
             
         </div>
+        <!--pictures go here describing the program-->
         
+        <div class=" container well home_section" id ="body_page" style =" height:50em; position:relative" >
+            <div class=" container" style = "height:10em; width:70em; background-color:red"></div>
+            <div class=" container" style = "height:10em; width:70em; background-color:blue"></div>
+            <div class=" container" style = "height:10em; width:70em; background-color:green"></div>
+            <div class=" container" style = "height:10em; width:70em; background-color:pink"></div>
 
-        
+        </div>
+        <!--the rest of the home page will be in this div-->
 
     </body>

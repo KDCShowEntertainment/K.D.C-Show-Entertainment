@@ -41,15 +41,15 @@
   
  /*from tobologz below */
         
-            @font-face {
-              font-family: 'bootstrap_font';
-              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
-                     url('./glyphicons-halflings-regular.woff') format('woff'),
-                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+            /*@font-face {*/
+            /*  font-family: 'bootstrap_font';*/
+            /*  src: url('./glyphicons-halflings-regular.woff2') format('woff2'),*/
+            /*         url('./glyphicons-halflings-regular.woff') format('woff'),*/
+            /*         url('./glyphicons-halflings-regular.ttf') format('truetype');*/
                      
-              font-weight: normal;
-              font-style: normal;
-            }
+            /*  font-weight: normal;*/
+            /*  font-style: normal;*/
+            /*}*/
             
             html {
                 font-family : "bootstrap_font";
@@ -119,7 +119,7 @@
             }
             
             body {
-                background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
+                background-image: linear-gradient(-135deg,green,green,yellow,#1400c8,#1400c8);
                 /*background-size: 100% 100%;*/
                 /*background-repeat: no-repeat;*/
                 /*figure out how to change its size*/
