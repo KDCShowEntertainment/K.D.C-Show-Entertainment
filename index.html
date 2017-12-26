@@ -22,8 +22,15 @@
         <script>
         
             var resize_done = 0;
+            var page_info;
+            //hold everything in body_page ill do this later I ll just have the page refresh on click for now
             
             $(document).ready(function() {
+                var body_width = $("body").css("width");
+                var body_height = (parseInt($("body").css("height").split("p")[0])/4).toString() + "px"
+                
+                
+                console.log(body_width,body_height)
                 $(" .carousel-control > .glyphicon ").css({"font-family": "bootstrap_font","color":"black"});
                 
                 function expand_at_point () {
@@ -44,14 +51,30 @@
                         if(resize_done != 1){
                             content.css("opacity",".5")
                         }
-                        content.animate({
-                            height: (parseInt($("body").css("height").split("p")[0])/4).toString() + "px",
-                            width:$("body").css("width"),
-                            opacity: "1",
-                            "margin-left":"-1.4em"
+
+                        if(index == 0){
+                            content.animate({
+                                height: (parseInt($("body").css("height").split("p")[0])/4).toString() + "px",
+                                width:$("body").css("width"),
+                                // "background-size": (body_width + " " + body_height).toString(),
+                                opacity: "1",
+                                "margin-left":"-1.4em",
+                                "margin-top":"-1.35em"
                             
-                        },1500)
-                        content.css("margin-left","-1.4em")
+                             },1500)
+                             
+                        }
+                        else{
+                            content.animate({
+                                height: (parseInt($("body").css("height").split("p")[0])/4).toString() + "px",
+                                width:$("body").css("width"),
+                                opacity: "1",
+                                "margin-left":"-1.4em"
+
+                            
+                            },1500)
+
+                        }
                     })
                     resize_done = 1;
                     //to properly resize the screen
@@ -60,12 +83,18 @@
                     
                 };
                 
+                //additional page edits
                 $("#body_page > div").eq(0).css("margin-top","-1.35em")
-                console.log( (parseInt($("body").css("height").split("p")[0])/4).toString() + "px")
-                console.log($("#body_page ").css("left"))
-                console.log($("#body_page").css("height"))
-                console.log($("body").offset().top)
+                
+                
+                $("#body_page > div > div ").eq(2).css("background-color","rgba(255,255,255,.7)")
+                //
+                // find out how jquery finds all elements bound to a selected event handler
                 $(window).scroll(expand_at_point);
+                $("#body_page").click(function () {
+                    // window.location = window.location;
+                })
+                
             });
         </script>
     </head>
@@ -137,11 +166,23 @@
         </div>
         <!--pictures go here describing the program-->
         
-        <div class=" container well home_section" id ="body_page" style =" height:50em; position:relative" >
-            <div class=" container" style = "height:10em; width:70em; background-color:orange"></div>
-            <div class=" container" style = "height:10em; width:70em; background-color:rgb(0, 255, 255)"></div>
-            <div class=" container" style = "height:10em; width:70em; background-color:rgba(0,255,0,1)"></div>
-            <div class=" container" style = "height:10em; width:70em; background-color:pink"></div>
+        <div class=" container well home_section" id ="body_page" style =" height:100em; position:relative" >
+            <div class=" container pic_1" id ="index" style = "height:20em; width:70em; background-color:orange; ">
+                <div id = "index" class = "body_info"></div>
+
+            </div>
+            <div class=" container pic_2" id ="index" style = "height:20em; width:70em; background-color:rgb(0, 255, 255)">
+                <div id = "index" class = "body_info"></div>
+                
+            </div>
+            <div class=" container pic_3" id ="index" style = "height:20em; width:70em; background-color:rgba(0,255,0,1)">
+                <div id = "index" class = "body_info"></div>
+                
+            </div>
+            <div class=" container pic_4" id ="index" style = "height:20em; width:70em; background-color:pink">
+                <div id = "index" class = "body_info"></div>
+                
+            </div>
 
         </div>
         <!--the rest of the home page will be in this div-->
