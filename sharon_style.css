@@ -68,6 +68,20 @@
                 margin-top:2em;
                 background-color:rgba(255,255,255,.2);
             }
+            
+            #index.navigator{
+                height:4em;
+                width:20em;
+                border-radius:50px;
+                position:relative;
+            }
+            
+            #index.nav_container{
+                position:fixed;
+                z-index:25;
+                top:20%;
+                left:-18em;
+            }
  /*from tobologz below */
         
             /*@font-face {*/

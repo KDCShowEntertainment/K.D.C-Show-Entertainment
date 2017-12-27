@@ -9,6 +9,7 @@
         <script src="./jquery_parallax.js"></script>
         <script src="./jquery_rotate.js"></script>
         <script src="./site_map_instruction.js"></script>
+        <script src="./navigation.js"></script>
         <script src="./bootstrap.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=.21">
         <link rel="stylesheet" href="./bootstrap.min.css">
@@ -27,17 +28,18 @@
             
             $(document).ready(function() {
                 var body_width = $("body").css("width");
-                var body_height = (parseInt($("body").css("height").split("p")[0])/4).toString() + "px"
+                var body_height = $("body").css("height");
+                var body_info_height = (parseInt($("body").css("height").split("p")[0])/4).toString() + "px"
                 
                 
                 console.log(body_width,body_height)
                 $(" .carousel-control > .glyphicon ").css({"font-family": "bootstrap_font","color":"black"});
                 
                 function expand_at_point () {
-                    if($(window).scrollTop()  >= $("#body_page").offset().top - 5){
-                        
+                    if($(window).scrollTop()  >= $("#body_page").offset().top - 5 ){
+                        // for some reason if you include resize done in the conditional as && resize_done = 1, it leaves the pictures out of the div container
                         $("#body_page").animate({
-                            height:$("body").css("height"),
+                            height:body_height,
                             width:$("body").css("width"),
                             "margin-top":"-504px"
                         },1500)
@@ -54,8 +56,8 @@
 
                         if(index == 0){
                             content.animate({
-                                height: (parseInt($("body").css("height").split("p")[0])/4).toString() + "px",
-                                width:$("body").css("width"),
+                                height: body_info_height,
+                                width:body_width,
                                 // "background-size": (body_width + " " + body_height).toString(),
                                 opacity: "1",
                                 "margin-left":"-1.4em",
@@ -66,8 +68,8 @@
                         }
                         else{
                             content.animate({
-                                height: (parseInt($("body").css("height").split("p")[0])/4).toString() + "px",
-                                width:$("body").css("width"),
+                                height:body_info_height,
+                                width:body_width,
                                 opacity: "1",
                                 "margin-left":"-1.4em"
 
@@ -83,6 +85,9 @@
                     
                 };
                 
+                //navigator jquery
+
+                //
                 //additional page edits
                 $("#body_page > div").eq(0).css("margin-top","-1.35em")
                 
@@ -92,7 +97,7 @@
                 // find out how jquery finds all elements bound to a selected event handler
                 $(window).scroll(expand_at_point);
                 $("#body_page").click(function () {
-                    // window.location = window.location;
+                    window.location = window.location;
                 })
                 
             });
@@ -186,6 +191,9 @@
 
         </div>
         <!--the rest of the home page will be in this div-->
-
+        <div class = "container nav_container" id = "index"  >
+            <div class = "well navigator" id = "index"></div>
+        </div>
+        <!--this is the navigation bar to be used in all pages on the site-->
     
     </body>
