@@ -37,8 +37,13 @@
             .my_right{
                 right: 0;
                 left: auto;
+                z-index:30;
             }
             
+            .my_left{
+
+                z-index:30;
+            }
 /*home page             */
         
             #index.pic_1{
@@ -59,6 +64,11 @@
              #index.pic_4{
                 background-image:url("./PEXELS_Images/home_pics/pic_4.jpeg");
                 background-size:100% 100%;
+            }
+            
+            #index.pic{
+                height:20em;
+                width:70em;
             }
             
             #index.body_info{
