@@ -1,5 +1,5 @@
-<!--I have Idea for background, black with roses all over-->
-<!--finsihed up nav activation now to work on nav deactivation animating navigation select by choose any with navigator, further restricts if one is already chosen also now inital body page is proper before scroll for tablet devices -->
+
+<!--on click of the pic in the div the window scoll function is disabled based on click pattern so when the window scroll function returns true it returns on itself because of the click boolean intervention, used the stop function to disable the animation lag -->
 
 <html>
     <head>
@@ -8,6 +8,7 @@
         <script src="./jquery_rolodex.js"></script>
         <script src="./jquery_parallax.js"></script>
         <script src="./jquery_rotate.js"></script>
+        <script src="./jquery_michael_toggle.js"></script>
         <script src="./site_map_instruction.js"></script>
         <script src="./navigation.js"></script>
         <script src="./bootstrap.min.js"></script>
@@ -23,10 +24,21 @@
         <script>
         
             var resize_done = 0;
-            var page_info;
+            var page_info = [];
             //hold everything in body_page ill do this later I ll just have the page refresh on click for now
+            var page_object;
+            // represents the object whose feautres must be restored
+            var body_clicked = false;
+            //after inital window scroll, page changes based on the click of the body click
+            
+            
+            
             
             $(document).ready(function() {
+                
+                
+                
+                
                 var body_width = $("body").css("width");
                 var body_height = $("body").css("height");
                 var body_info_height = (parseInt($("body").css("height").split("p")[0])/4).toString() + "px"
@@ -47,14 +59,51 @@
                     "border-bottom-left-radius":$("#body_page").css("border-radius"),
                     "border-bottom-right-radius":$("#body_page").css("border-radius")
                 })
+                // presetting information, that the css jquery could've done, but since it is for many pages kept it local
                 
-                console.log(body_width,body_height)
+                page_info.push({"#body_page":{
+                    "width" :$("#body_page").css("width"),
+                    "height" :$("#body_page").css("height"),
+                    "margin-top" : $("#body_page").css("margin-top"),
+                    "z-index": $("#body_page").css("z-index")
+                    }
+                })
+                
+                page_info.push({".my_right, .my_left":{
+                    "z-index" :  $(".my_left").css("z-index")
+                    }
+                })
+                
+                page_info.push({".pic":{
+                    "height":      $(".pic").css("height"),
+                    "width":       $(".pic").css("width"),
+                    "opacity":     $(".pic").css("opacity"),
+                    "margin-left": $(".pic").css("margin-left")
+                    // "margin-top":  $(".pic").css("margin-top")
+                    
+                }
+                    
+                })
+                //body resetting information
+                
+                function page_execute(move_it){
+                    $(page_object).stop().animate(move_it[page_object],1500);
+                }
+                // script seems to get confused to make a simple animation
+                
+                
+                
                 $(" .carousel-control > .glyphicon ").css({"font-family": "bootstrap_font","color":"black"});
                 
                 function expand_at_point () {
                     if($(window).scrollTop()  >= $("#body_page").offset().top - 5 ){
                         // for some reason if you include resize done in the conditional as && resize_done = 1, it leaves the pictures out of the div container
-                        $("#body_page").animate({
+                        if(body_clicked == true){
+                            console.log("not growing")
+                            return;
+                            
+                        }
+                        $("#body_page").stop().animate({
                             height:body_height,
                             width:$("body").css("width"),
                             "margin-top":"-504px"
@@ -72,7 +121,7 @@
                         }
 
                         if(index == 0){
-                            content.animate({
+                            content.stop().animate({
                                 height: body_info_height,
                                 width:body_width,
                                 // "background-size": (body_width + " " + body_height).toString(),
@@ -84,7 +133,7 @@
                              
                         }
                         else{
-                            content.animate({
+                            content.stop().animate({
                                 height:body_info_height,
                                 width:body_width,
                                 opacity: "1",
@@ -113,8 +162,26 @@
                 //
                 // find out how jquery finds all elements bound to a selected event handler
                 $(window).scroll(expand_at_point);
-                $("#body_page").click(function () {
-                    window.location = window.location;
+                $(".pic").stop().click(function () {
+                    
+                    if(body_clicked == false){
+                        body_clicked = true;
+                    }
+                    
+                    else{
+                        body_clicked = false;
+                    }
+                    
+                    page_info.forEach(function (moving_piece) {
+                        page_object = Object.keys(moving_piece)[0]
+                        // page_execute(moving_piece);
+                        $(page_object).stop().animate(moving_piece[page_object],1500);
+                        
+                        
+                        
+                        
+                    })
+                    console.log(body_clicked)
                 })
                 
             });
