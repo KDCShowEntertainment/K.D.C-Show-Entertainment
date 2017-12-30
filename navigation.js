@@ -1,3 +1,5 @@
+//fixed all descrpancy bugs with a function boolean parameter clearqueue I got from jquery stop
+  
             function wait(ms){
                var start = new Date().getTime();
                var end = start;
@@ -9,6 +11,11 @@
 var executed = false;
 //for toggling
 // you can bind each navigator item to an event and trigger the event in appropriate timing to aviod the recusion
+
+var correct_format;
+//for descrepancy detection
+var descrpancy_calls = 0;
+// to get rid of excess recursion calls
 
         var nav_info = ["Home","Calendar","Contact Us","Venues","Amenities","Cast","Tickets","Back to Screen"]
                 $(document).ready(function() {
@@ -35,10 +42,27 @@ var executed = false;
                     i = 0;
                     j = 0;
                     interval_count = 0;
+
+                    
                     function nav_by_one(){
                         interval_count += 1;
-                        if(i == navigator_set.length){
-                            
+                        if(i == navigator_set.length ){
+                            descrpancy_calls += 1;
+                            if(descrpancy_calls > 2){
+                                console.log(descrpancy_calls)
+                                
+                                //to stop the descrpancy calls and let the intention finish once it finds the descrpancy, stop must equal true to remove everything on the quene and finish the animation
+                                
+                            }
+
+                            navigator_set.AllValuesSame(correct_format).forEach(function (bug) {
+                                console.log("fixing",bug,correct_format)
+                                navigator_set[bug].stop(true).animate({
+                                    "left":correct_format
+                                })
+                                // this code fixes all broken nav items, but waits for all recursive calls to make changes do, something about this
+
+                            })
                             return;
                         }
                         else{
@@ -51,13 +75,17 @@ var executed = false;
                             console.log(interval_count,i)
                                 
                                 if(executed == true){
-                                    navigator_set[i - 1 ].animate({
+                                    $("#div_tester").css("height","18em");
+                                    correct_format = $("#div_tester").css("height")
+                                    navigator_set[i - 1 ].stop().animate({
                                         left:"18em"
                                     },700,nav_by_one)
                                     console.log("went right")
                                 }
                                 
                                 else{
+                                    $("#div_tester").css("height","0em");
+                                    correct_format = $("#div_tester").css("height")
                                     navigator_set[navigator_set.length- i ].animate({
                                         left:"0em"
                                     },700,nav_by_one)
@@ -72,8 +100,21 @@ var executed = false;
                     //this function displays the nav options one by one
                     // for some reason, at a certain point it starts going by two finx this
 
-                    
+                    Array.prototype.AllValuesSame = function(correct_format){
+                     
 
+                        var buggy_array = [];
+                        if(this.length > 0) {
+                            for(var i = 0; i < this.length; i++)
+                            {
+                                if(this[i].css("left") !== correct_format )
+                                    
+                                    buggy_array.push(i);
+                            }
+                        }
+                        return buggy_array;
+                    }
+                    //this function allows the user to put the improper navs in line
                     
                     $(".nav_container").css("opacity",".7")
                     
@@ -87,6 +128,8 @@ var executed = false;
                     //         left:"18em"
                     //     })
                     // })
+                    
+
                     
                     $(".navigator").on("click mouseover",function () {
                         if (executed === true){
@@ -119,6 +162,10 @@ var executed = false;
                         $(".nav_header").css("opacity","1");
                         $(".nav_header").show();
                         nav_by_one();
+                        
+                        
+
+                        
                         // navigator_set.forEach(function (show_up) {
                         //     show_up.trigger("hit");
                         // })
