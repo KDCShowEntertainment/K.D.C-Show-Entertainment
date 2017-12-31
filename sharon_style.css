@@ -13,6 +13,7 @@
                 border:1px solid red;
                 height:6em;
                 
+                
             }
             
             a.title{
@@ -79,6 +80,12 @@
                 background-color:rgba(255,255,255,.2);
             }
             
+/*should have been nav id            */
+            
+            #nav{
+                
+            }
+            
             #index.navigator{
                 height:4em;
                 width:20em;
@@ -120,6 +127,37 @@
             
             h1#index.nav_header {
                 font-size:1em;
+                
+            }
+            
+/*calendar page            */
+    
+
+            
+            #calendar.canvas {
+                background-color:black;
+                height:78em;
+                width:79em;
+                margin:auto;
+                border: 1px solid red;
+            }
+            
+            #calendar.title {
+                color:red;
+                font-size:7em;
+                
+            }
+            
+            #calendar.line {
+                width:$("#calendar.canvas").css("width");
+                height:1px;
+                background-color:red;
+            }
+            
+            #calendar.month{
+                color:red;
+                text-align:center;
+                text-decoration:underline;
                 
             }
  /*from tobologz below */

@@ -22,23 +22,33 @@
         
         <script>
             $(document).ready(function() {
-                
+            console.log($("body :not([id])").attr("id","calendar"))
             });
         </script>
     </head>
     <body>
-        <div class=" container well title" >
+        <div class=" container well title" id ="title" >
         
-                <a href ="./index.html" class = "title" style = "color:rgba(0,0,0,.5);">K.D.C Show Entertainment </a>
+                <a href ="./index.html" class = "title"  id ="title" style = "color:rgba(0,0,0,.5);">K.D.C Show Entertainment </a>
                 <!--for  some reason ,class from extenal css is not taking the color attr-->
             
         </div>
+        <div class ="canvas" >
+            <h1 class ="title" >Calendar</h1>
+            <div class = "line" ></div>
+            <h2 class = "month" > January</h2>
+            <div class = "day" ></div>
+            
+            
+        </div>
+        
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>
         </div>
         <div class = "container nav_container " id = "index"  >
             <div class = "well navigator" id = "index">
-                <h3>Home</h3>
+                <h3 id = "nav"></h3>
+                
             </div>
         </div>
 

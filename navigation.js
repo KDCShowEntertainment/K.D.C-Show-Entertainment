@@ -1,4 +1,4 @@
-//fixed all descrpancy bugs with a function boolean parameter clearqueue I got from jquery stop
+//  added links to the website
   
             function wait(ms){
                var start = new Date().getTime();
@@ -16,9 +16,13 @@ var correct_format;
 //for descrepancy detection
 var descrpancy_calls = 0;
 // to get rid of excess recursion calls
+var correct_link = 0;
+var nav_holder;
+// for rewritting nav links
 
         var nav_info = ["Home","Calendar","Contact Us","Venues","Amenities","Cast","Tickets","Back to Screen"]
                 $(document).ready(function() {
+                    
                     var nav_card = $(".navigator").clone();
 
                     // $(".nav_container").append(nav_card);
@@ -36,6 +40,51 @@ var descrpancy_calls = 0;
                         $(".navigator > h3").eq(index).css({"text-align":"center","margin-top":"-.3em"})
                         
                         $(".navigator > h3").eq(index).text(nav_info[index])
+                        
+                        
+                        if(link_item != $("navigator:last")){
+                            
+                            
+                            nav_holder = nav_info[index]
+                            if(nav_holder == "Home"){
+                                nav_info[index] = "index"
+                            }
+                            
+                            else {
+                                while((correct_link) != nav_holder.split(" ").length ){
+                                if(correct_link == 0) {
+                                    nav_info[index] = nav_holder.split(" ")[0];
+                                    if( nav_holder.split(" ").length > 1 ){
+                                        nav_info[index] += "_";
+                                    }
+                                    else{
+                                        nav_info[index] = nav_holder.split(" ")[0];
+                                    }
+                                }
+                                
+                                
+                                else{
+                                   if(nav_holder.split(" ")[correct_link + 1] != undefined ){
+                                        nav_info[index] += nav_holder.split(" ")[correct_link] + "_";
+                                   }
+                                   else{
+                                       nav_info[index] += nav_holder.split(" ")[correct_link] ;
+                                   }
+                                }
+                                correct_link += 1;
+                                
+                            }
+                            }
+                            // link controller
+                            correct_link = 0;
+                            
+                            $(".navigator").eq(index).click(function () {
+                                
+                                
+                                window.location = nav_info[index].toLowerCase() + ".html"
+                            })
+                        }
+                        
                         return $(link_item)
                     })
                     
@@ -131,7 +180,7 @@ var descrpancy_calls = 0;
                     
 
                     
-                    $(".navigator").on("click mouseover",function () {
+                    $(".navigator").on(" mouseover",function () {
                         if (executed === true){
                             return;
                         }
