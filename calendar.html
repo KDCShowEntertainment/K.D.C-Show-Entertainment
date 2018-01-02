@@ -21,8 +21,59 @@
         
         
         <script>
+
             $(document).ready(function() {
+            var x_tab;
+            var y_tab;
+            var x_case;
+            var y_case;
+            console.log(x_tab,y_tab)
             console.log($("body :not([id])").attr("id","calendar"))
+            $("#calendar.day").css("width",(parseInt($("#calendar.canvas").css("width").split("p")[0])/7).toString() + "px");
+            $("#calendar.day").css("height",(((parseInt($("#calendar.canvas").css("height").split("p")[0])) - ((parseInt($("#calendar.title").css("height").split("p")[0])) + (parseInt($("#calendar.month").css("height").split("p")[0]))))/6).toString() + "px");
+            //taking what empty space is left for calendar days
+            console.log($("#calendar.day").css("height"),$("#calendar.day").css("width"))
+            x_tab = parseInt($("#calendar.day:last").css("width").split("p")[0]);
+            y_tab = parseInt($("#calendar.day:last").css("height").split("p")[0]);
+            
+            var $Calendar_day = $("#calendar.day").clone();
+            $("#calendar.day").append($Calendar_day)
+            var $calendar_day = $Calendar_day.clone()
+            // $("#calendar.day:first").hide();
+            $Calendar_day.hide()
+            $("#calendar.day").hide();
+            // cloning process not the same for everything you do
+            function daysInMonth(iMonth, iYear)
+            {
+                return 32 - new Date(iYear, iMonth, 32).getDate();
+            }
+            
+            function day_of_week(Month,iYear,idate){
+                return new Date(idate.toString() + "January," + iYear.toString()).getDay()
+            }
+            
+            
+            var days = daysInMonth(new Date().getMonth(),new Date().getFullYear());
+            
+            while(days != 0){
+                var weekday = day_of_week("January",new Date().getFullYear(),(-(days-32)));
+                x_case = x_tab * weekday;
+                y_case = y_tab* (parseInt(((-(days-32) )) - weekday)/7) -(7 * y_tab * (parseInt(((-(days-32) )) - weekday)/7)  )   - (y_tab * (weekday - 1))
+                // the y alignment doesn't work as easily as x alignment, first you must subtract the  height several times and subtract the height times the days specific to the week and then involve the y_tab ratio again
+                console.log(y_case)
+                $("#calendar.canvas").append($calendar_day.clone());
+                $("#calendar.day:last").css({
+                    left:x_case,
+                    top:y_case
+                })
+                $("#calendar.day:last").append("<h4 id = 'calendar' class = 'day'>" + (-(days-32)).toString() + "</h4>");
+                
+                days -= 1;
+                
+            }
+            var caledar_day_set = $.map($("div#calendar.day"),function (weekday,index){
+                // console.log($(weekday))
+            });
             });
         </script>
     </head>
@@ -40,6 +91,7 @@
             <div class = "day" ></div>
             
             
+            
         </div>
         
         <div class = "container nav_header"  id = "index" >
@@ -52,4 +104,5 @@
             </div>
         </div>
 
+    
     </body>

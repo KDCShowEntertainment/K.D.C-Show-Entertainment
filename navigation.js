@@ -23,6 +23,9 @@ var nav_holder;
         var nav_info = ["Home","Calendar","Contact Us","Venues","Amenities","Cast","Tickets","Back to Screen"]
                 $(document).ready(function() {
                     
+                    $("body").append("<div id ='nav' class = 'div_tester'></div>")
+
+                    
                     var nav_card = $(".navigator").clone();
 
                     // $(".nav_container").append(nav_card);
@@ -124,17 +127,18 @@ var nav_holder;
                             console.log(interval_count,i)
                                 
                                 if(executed == true){
-                                    $("#div_tester").css("height","18em");
-                                    correct_format = $("#div_tester").css("height")
+                                    $("#div_tester, #nav.div_tester").css("height","18em");
+                                    correct_format = $("#div_tester, #nav.div_tester").css("height")
+                                    $("#div_tester, #nav.div_tester").css("height","0em");
                                     navigator_set[i - 1 ].stop().animate({
                                         left:"18em"
                                     },700,nav_by_one)
                                     console.log("went right")
                                 }
-                                
+                                // seems an update allows divs with missing dimensions to be recognized by the browser, so i only change the div just for correct_format to register
                                 else{
-                                    $("#div_tester").css("height","0em");
-                                    correct_format = $("#div_tester").css("height")
+                                    $("#div_tester, #nav.div_tester").css("height","0em");
+                                    correct_format = $("#div_tester, #nav.div_tester").css("height")
                                     navigator_set[navigator_set.length- i ].animate({
                                         left:"0em"
                                     },700,nav_by_one)
@@ -142,7 +146,7 @@ var nav_holder;
                                     console.log(navigator_set[navigator_set.length- i ])
                                     
                                 }
-                            
+                                //wanted to use the nav id for all things nav but too late to avoid confusion have two different divs
                             
                         }
                     }

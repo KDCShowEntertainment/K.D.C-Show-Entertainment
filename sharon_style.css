@@ -82,8 +82,23 @@
             
 /*should have been nav id            */
             
-            #nav{
-                
+            #nav.div_tester{
+                height:0;
+                width:0;
+                outline:none;
+                border:none;
+                padding:none;
+                margin:none;
+                display:none;
+            }
+            
+            #div_tester{
+                height:0;
+                width:0;
+                outline:none;
+                border:none;
+                padding:none;
+                margin:none;
             }
             
             #index.navigator{
@@ -140,6 +155,7 @@
                 width:79em;
                 margin:auto;
                 border: 1px solid red;
+                
             }
             
             #calendar.title {
@@ -160,6 +176,23 @@
                 text-decoration:underline;
                 
             }
+            
+            #calendar.day{
+                background-color:black;
+                border: 1px solid red;
+                z-index:31;
+                position:relative;
+                
+                
+                
+            }
+            
+            h4#calendar.day{
+                color:red;
+                border:none;
+                text-decoration:underline;
+            }
+            
  /*from tobologz below */
         
             @font-face {
