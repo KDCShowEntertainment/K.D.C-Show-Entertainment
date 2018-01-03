@@ -155,6 +155,7 @@
                 width:79em;
                 margin:auto;
                 border: 1px solid red;
+                position:relative;
                 
             }
             
@@ -191,7 +192,35 @@
                 color:red;
                 border:none;
                 text-decoration:underline;
+                
             }
+            
+            #calendar.week{
+                border:3px solid red;
+                width: $("#calendar.canvas").css("width");
+                height:4em;
+                border-radius:250px;
+                
+            }
+            
+
+            
+            div#calendar.weekday{
+               height: 2em;
+               border:3px solid red;
+               position:relative;
+
+            }
+            
+            #calendar.weekdays   {
+               font-family:"chancur", cursive;
+               font-size:1.5em;
+               margin:auto;
+               color:green;
+               margin-left:1em;
+               margin-top:-.5em;
+            }
+            
             
  /*from tobologz below */
         
@@ -205,9 +234,10 @@
               font-style: normal;
             }
             
-            /*html {*/
-            /*    font-family : "bootstrap_font";*/
-            /*}*/
+            @viewport{
+                min-zoom:50%
+                
+            }
             
 
             
@@ -273,8 +303,9 @@
             }
             
             body {
-                background-image:url("./PEXELS_Images/roses_background.png")
-                /*background-image:url("./roses_background.png")*/
+                background-image:url("./PEXELS_Images/roses_background.png");
+
+                
                 /*for github problem*/
                 /*background-image: linear-gradient(-135deg,green,green,yellow,#1400c8,#1400c8);*/
                 /*background-size: 100% 100%;*/
