@@ -22,11 +22,15 @@
         
         <script>
             $(document).ready(function() {
-                var ids = document.location.href.split("/");
-                console.log(ids[ids.length-1].split(".")[0])
-                
-                $("body :not([id])").attr("id",ids[ids.length-1].split(".")[0])
-                console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"))
+            var ids = document.location.href.split("/");
+            console.log(ids[ids.length-1].split(".")[0])
+            
+            $("body :not([id])").attr("id",ids[ids.length-1].split(".")[0])
+            console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"))
+            
+            
+            
+            
             });
         </script>
     </head>
@@ -37,13 +41,22 @@
                 <!--for  some reason ,class from extenal css is not taking the color attr-->
             
         </div>
-        
+        <div class = "container title">
+            <h3 class = "title">Contact Us</h3>
+        </div>
+        <div class = " pic pic_1">
+            <div class = "inner_div">
+                <h2 class = "inner_div_text" >Heading</h2>
+                <h3 class = "inner_div_text"> Phone</h3>
+                <h3 class = "inner_div_text">Little about message</h3>
+            </div>
+        </div>
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>
         </div>
         <div class = "container nav_container " id = "index"  >
             <div class = "well navigator" id = "index">
-                <h3 id ="nav">Home</h3>
+                <h3 id = "nav">Home</h3>
             </div>
         </div>
         

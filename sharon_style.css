@@ -221,6 +221,59 @@
                margin-top:-.5em;
             }
             
+/*contact us page            */
+
+            div#contact_us.title{
+                position:relative;
+            }
+            
+            h3#contact_us.title{
+                text-align:center;
+                color:pink;
+                font-size:2em;
+                letter-spacing:.4em;
+            }
+            
+            #contact_us.inner_div{
+                background-color:black;
+                width:59em;
+                height:22em;
+                margin:auto;
+                margin-top:3em;
+                border-radius:25px;
+                border: 1px solid red;
+                position:relative;
+                opacity:.82;
+                
+            }
+            
+            #contact_us.inner_div_text{
+                color:red;
+                text-align:center;
+            }
+
+
+            
+            #contact_us.pic{
+                width:79em;
+                height:32em;
+                margin:auto;
+                border-radius:25px;
+                border: 1px solid ;
+            }
+            
+            #contact_us.pic_1{
+                background-image:url("./PEXELS_Images/contact_pics/workplace.jpeg");
+                background-size:100% 100%;
+            }
+            
+/*venues page            */
+            
+            h3#venues.title{
+                color:pink;
+                text-align:center;
+                font-size:3em;
+            }
             
  /*from tobologz below */
         

@@ -184,11 +184,11 @@ var nav_holder;
                     
 
                     
-                    $(".navigator").on(" mouseover",function () {
+                    $(".nav_container").on("mouseenter").on( "mouseover",".navigator",function () {
                         if (executed === true){
                             return;
                         }
-                        
+                        // for some reason jquery is not listening to .nav_container
                         console.log(executed)
                         i = 0;
                         interval_count = 0;
@@ -233,6 +233,7 @@ var nav_holder;
                     
                 
                         var show_page = function () {
+                            
                             if(executed == true){
                                 i = 0;
                                 interval_count = 0;
@@ -247,6 +248,7 @@ var nav_holder;
 
                             
                         }
+                        $(".navigator:last").unbind("click")
                         
                         $(".nav_container ").on("dblclick mouseleave",show_page).on("click",".navigator:last",show_page)
 
