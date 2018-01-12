@@ -269,12 +269,58 @@
             
 /*venues page            */
             
-            h3#venues.title{
+            h3#story_vote.title{
                 color:pink;
                 text-align:center;
                 font-size:3em;
             }
             
+            #story_vote.story_holder{
+                background-repeat: no-repeat;
+                background-size:4000px 1000px;
+                height: 26.3em;
+                width:90em;
+                max-width:100%;
+                background-size: 104.38em 26.3em;
+                /*this can squeeze or stretch the page*/
+                z-index:5;
+                color:white;
+                
+            }
+            
+            #story_vote.story{
+                width: 200px;
+                height:200px;
+            	text-align: center;
+            	background-color: white;
+            	z-index:1;
+            	border-radius:400px;
+                top: 275px;
+                right: 900px;
+                background-size: 150px 150px;
+            }
+            
+            #story_vote.story_holder_1{
+                background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");
+                
+            }
+            
+            #story_vote.story_1{
+                
+                background-repeat:no-repeat;
+                width: 140px;
+                height:140px;
+                border-radius:0;
+                margin-top:2em;
+                
+                /*width: 25px;*/
+                /*height:100px;*/
+                
+            }
+            
+            #story_vote.story_heading{
+                text-align:center;
+            }
  /*from tobologz below */
         
             @font-face {

@@ -20,7 +20,7 @@ var correct_link = 0;
 var nav_holder;
 // for rewritting nav links
 
-        var nav_info = ["Home","Calendar","Contact Us","Venues","Amenities","Cast","Tickets","Back to Screen"]
+        var nav_info = ["Home","Calendar","Contact Us","Story Vote","Amenities","Cast","Tickets","Back to Screen"]
                 $(document).ready(function() {
                     
                     $("body").append("<div id ='nav' class = 'div_tester'></div>")
@@ -184,7 +184,7 @@ var nav_holder;
                     
 
                     
-                    $(".nav_container").on("mouseenter").on( "mouseover",".navigator",function () {
+                    $(".nav_container").on("mouseenter").on( " click mouseover",".navigator",function () {
                         if (executed === true){
                             return;
                         }
@@ -192,22 +192,9 @@ var nav_holder;
                         console.log(executed)
                         i = 0;
                         interval_count = 0;
-                        // if(executed == true){
-                        // var show_page = function () {
-                        //         i = 0;
-                        //         interval_count = 0;
-                        //         executed = false;
-                        //         $(".nav_header").hide();
-                        //         $("body > :not(.navigator)").css("opacity","1")
-                        //         $(".nav_container").css({"opacity":"0.7","height":"43em","overflow-y":"visible","overflow-x":"visible","z-index":"25"})
-                        //         nav_by_one();
-                        //     }
-                        //     $(".nav_container ").on("dblclick mouseleave",show_page).on("dblclick",".navigator:last",show_page)
-                            
-                        // }
+
                         $("body > :not(.navigator)").css("opacity",".3")
-                        // $("div:not(.navigator)").css("opacity",".3")
-                        // $(".home_section").css("opacity",".3")
+
                         
                         $("body").css("opacity","1")
                         $(".nav_container").css({"opacity":"1","height":"30em","overflow-y":"scroll","overflow-x":"hidden","z-index":"25"})
@@ -216,13 +203,7 @@ var nav_holder;
                         $(".nav_header").show();
                         nav_by_one();
                         
-                        
-
-                        
-                        // navigator_set.forEach(function (show_up) {
-                        //     show_up.trigger("hit");
-                        // })
-                        i = 0
+                        i = 0;
                         interval_count = 0;
                         executed = true;
                         
