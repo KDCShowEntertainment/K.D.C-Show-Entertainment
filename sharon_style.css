@@ -1,25 +1,25 @@
             @font-face {
               font-family: 'chancur';
               src: url('./chancur.ttf') format('truetype');
-                     
+
               font-weight: normal;
               font-style: normal;
             }
- 
- 
+
+
             div.title{
                 border-radius:25px;
                 background-color:white;
                 border:1px solid red;
                 height:6em;
-                
-                
+
+
             }
-            
+
             a.title{
-                
+
                 color:rgba(0,0,0,.5);
-                
+
                 /*text-decoration-line:none;*/
                 margin-left:35%;
                 text-align:middle;
@@ -27,51 +27,51 @@
                 font-family:"chancur", cursive;
                 font-weight:bold;
             }
-            
+
             div.home_section{
                 border-radius:25px;
                 background-color:white;
                 border:1px solid red;
                 height:30em;
             }
-            
+
             .my_right{
                 right: 0;
                 left: auto;
                 z-index:30;
             }
-            
+
             .my_left{
 
                 z-index:30;
             }
 /*home page             */
-        
+
             #index.pic_1{
                 background-image:url("./PEXELS_Images/home_pics/pic_1.jpeg");
                 background-size:100% 100%;
             }
-            
+
             #index.pic_2{
                 background-image:url("./PEXELS_Images/home_pics/pic_2.jpeg");
                 background-size:100% 100%;
             }
-            
+
             #index.pic_3{
                 background-image:url("./PEXELS_Images/home_pics/pic_3.jpeg");
                 background-size:100% 100%;
             }
-  
+
              #index.pic_4{
                 background-image:url("./PEXELS_Images/home_pics/pic_4.jpeg");
                 background-size:100% 100%;
             }
-            
+
             #index.pic{
                 height:20em;
                 width:70em;
             }
-            
+
             #index.body_info{
                 height:80%;
                 width:80%;
@@ -79,9 +79,9 @@
                 margin-top:2em;
                 background-color:rgba(255,255,255,.2);
             }
-            
+
 /*should have been nav id            */
-            
+
             #nav.div_tester{
                 height:0;
                 width:0;
@@ -91,7 +91,7 @@
                 margin:none;
                 display:none;
             }
-            
+
             #div_tester{
                 height:0;
                 width:0;
@@ -100,17 +100,17 @@
                 padding:none;
                 margin:none;
             }
-            
+
             #index.navigator{
                 height:4em;
                 width:20em;
                 border-radius:50px;
                 border:4px solid pink;
                 position:relative;
-                
-                
+
+
             }
-            
+
             #index.nav_container{
                 position:fixed;
                 z-index:25;
@@ -118,11 +118,11 @@
                 left:-18em;
                 /*width:21em;*/
             }
-            
+
             #index.nav_container::-webkit-scrollbar {
                 display: none;
             }
-                        
+
             #index.nav_header{
                 position:absolute;
                 top:-1.3em;
@@ -130,25 +130,25 @@
                 font-size:7em;
                 color:pink;
             }
-            
- 
+
+
             div#index.nav_header {
-                
+
                 top:20%;
                 /*left:20em;*/
                 z-index:30;
                 position:fixed;
             }
-            
+
             h1#index.nav_header {
                 font-size:1em;
-                
-            }
-            
-/*calendar page            */
-    
 
-            
+            }
+
+/*calendar page            */
+
+
+
             #calendar.canvas {
                 background-color:black;
                 height:78em;
@@ -156,62 +156,62 @@
                 margin:auto;
                 border: 1px solid red;
                 position:relative;
-                
+
             }
-            
+
             #calendar.title {
                 color:red;
                 font-size:7em;
-                
+
             }
-            
+
             #calendar.line {
-                width:$("#calendar.canvas").css("width");
+                width:79em;
                 height:1px;
                 background-color:red;
             }
-            
+
             #calendar.month{
                 color:red;
                 text-align:center;
                 text-decoration:underline;
-                
+
             }
-            
+
             #calendar.day{
                 background-color:black;
                 border: 1px solid red;
                 z-index:31;
                 position:relative;
-                
-                
-                
+
+
+
             }
-            
+
             h4#calendar.day{
                 color:red;
                 border:none;
                 text-decoration:underline;
-                
+
             }
-            
+
             #calendar.week{
                 border:3px solid red;
-                width: $("#calendar.canvas").css("width");
+                width: 79em;
                 height:4em;
                 border-radius:250px;
-                
-            }
-            
 
-            
+            }
+
+
+
             div#calendar.weekday{
                height: 2em;
                border:3px solid red;
                position:relative;
 
             }
-            
+
             #calendar.weekdays   {
                font-family:"chancur", cursive;
                font-size:1.5em;
@@ -220,20 +220,20 @@
                margin-left:1em;
                margin-top:-.5em;
             }
-            
+
 /*contact us page            */
 
             div#contact_us.title{
                 position:relative;
             }
-            
+
             h3#contact_us.title{
                 text-align:center;
                 color:pink;
                 font-size:2em;
                 letter-spacing:.4em;
             }
-            
+
             #contact_us.inner_div{
                 background-color:black;
                 width:59em;
@@ -244,16 +244,16 @@
                 border: 1px solid red;
                 position:relative;
                 opacity:.82;
-                
+
             }
-            
+
             #contact_us.inner_div_text{
                 color:red;
                 text-align:center;
             }
 
 
-            
+
             #contact_us.pic{
                 width:79em;
                 height:32em;
@@ -261,20 +261,20 @@
                 border-radius:25px;
                 border: 1px solid ;
             }
-            
+
             #contact_us.pic_1{
                 background-image:url("./PEXELS_Images/contact_pics/workplace.jpeg");
                 background-size:100% 100%;
             }
-            
+
 /*venues page            */
-            
+
             h3#story_vote.title{
                 color:pink;
                 text-align:center;
                 font-size:3em;
             }
-            
+
             #story_vote.story_holder{
                 background-repeat: no-repeat;
                 background-size:4000px 1000px;
@@ -285,9 +285,9 @@
                 /*this can squeeze or stretch the page*/
                 z-index:5;
                 color:white;
-                
+
             }
-            
+
             #story_vote.story{
                 width: 200px;
                 height:200px;
@@ -299,65 +299,65 @@
                 right: 900px;
                 background-size: 150px 150px;
             }
-            
+
             #story_vote.story_holder_1{
                 background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");
-                
+
             }
-            
+
             #story_vote.story_1{
-                
+
                 background-repeat:no-repeat;
                 width: 140px;
                 height:140px;
                 border-radius:0;
                 margin-top:2em;
-                
+
                 /*width: 25px;*/
                 /*height:100px;*/
-                
+
             }
-            
+
             #story_vote.story_heading{
                 text-align:center;
             }
  /*from tobologz below */
-        
+
             @font-face {
               font-family: 'bootstrap_font';
               src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
                      url('./glyphicons-halflings-regular.woff') format('woff'),
                      url('./glyphicons-halflings-regular.ttf') format('truetype');
-                     
+
               font-weight: normal;
               font-style: normal;
             }
-            
+
             @viewport{
                 min-zoom:50%
-                
-            }
-            
 
-            
-            
-            
+            }
+
+
+
+
+
 
             #web_colors{
                         color:grey;
                         background-color: white;
                         border-radius: 25px;
-                        
-                        
+
+
             }
 
             #heading {
                         text-align:center;
                         color:rgba(0,0,0,.8);
                         background-color:pink;
-                
+
             }
-            
+
             .square_bullets {
                              margin-top: 20px;
                              margin-left: -5px;
@@ -365,9 +365,9 @@
                              background-color:pink;
                              height:25px;
                              width:25px;
-                
+
             }
-            
+
             a:visited, a:hover{                         /* disables unwanted  link changes */
                 color:white;
                 text-decoration-line:none;
@@ -375,7 +375,7 @@
                 text-decoration:none;
             }
             /*make sure blue underline event gets taken out*/
-        
+
             .fa {
                 padding: 5px;
                 font-size: 30px;
@@ -386,25 +386,25 @@
                 border-radius: 50%;
                 color:white;
             }
-            
+
             .fa-facebook {
                 background-color: #3B5998;
-                
+
             }
 
-            
+
             .fa-twitter {
                 background-color:#55ACEE;
             }
-            
+
             .fa-instagram {
                 background-image: linear-gradient(-135deg,#1400c8,#b900b4,#f50000);
             }
-            
+
             body {
                 background-image:url("./PEXELS_Images/roses_background.png");
 
-                
+
                 /*for github problem*/
                 /*background-image: linear-gradient(-135deg,green,green,yellow,#1400c8,#1400c8);*/
                 /*background-size: 100% 100%;*/
@@ -412,17 +412,17 @@
                 /*figure out how to change its size*/
                 /*background-color:green;*/
             }
-            
+
             #homepage_well {
-                 
+
                 background-repeat: no-repeat;
                 background-size:4000px 1000px;
                 height: 800px;
-            
+
             }
-            
+
             #img_except2 {
-            	
+
                 width: 200px;
                 height:200px;
             	text-align: center;
@@ -431,25 +431,18 @@
             	border-radius:400px;
                 top: 275px;
                 right: 900px;
-                
+
             }
 
             h1 {
               margin: 0em ;
               font-size: 18em;
-              
+
               text-align: center;
             }
-            
+
             a.bio_class:hover,
             a.bio_class:focus {
               color: orange;
               text-decoration: underline;
             }
-
-            
-
-            
-
-            
-            

@@ -1,6 +1,6 @@
-<!--calendar adjusting was a hassle, defenitely do not refer to this to make a calendar extension-->
+<!-- in firefox you must make sure there are proper spaces betweeen date infomation the browser will not parse for you. Also in mozilla v 57.0 window content is attatined by window.top -->
 
-<html>
+<html lang = "en">
     <head>
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
@@ -16,12 +16,12 @@
         <link rel="stylesheet" href="./sharon_style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
-        
 
-        
-        
+
+
+
         <script>
-    
+
             var weekday_set = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
             $(document).ready(function() {
             var x_tab;
@@ -31,25 +31,25 @@
             var nameday_tab;
             var calendar_adjustment;
             //used as a constant to bring the calendar to the week
-            console.log(x_tab,y_tab)
+            var weekday;
             console.log($("body :not([id])").attr("id","calendar"))
             $("#calendar.day").css("width",(parseInt($("#calendar.canvas").css("width").split("p")[0])/7).toString() + "px");
             $("#calendar.day").css("height",(((parseInt($("#calendar.canvas").css("height").split("p")[0])) - ((parseInt($("#calendar.title").css("height").split("p")[0])) + (parseInt($("#calendar.month").css("height").split("p")[0]))))/6).toString() + "px");
             $("#calendar.weekday").css({
                 "width":$("#calendar.day").css("width")
-                
+
             });
             //taking what empty space is left for calendar days
             console.log($("#calendar.day").css("height"),$("#calendar.day").css("width"))
             x_tab = parseInt($("#calendar.day:last").css("width").split("p")[0])
             y_tab = [parseInt($("#calendar.day:last").css("height").split("p")[0]),parseInt($("#calendar.weekday:last").css("height").split("p")[0])]
-            
-            
+
+
             var $Calendar_weekday = $("#calendar.weekday").clone();
             $("#calendar.weekday").after($Calendar_weekday)
             var $calendar_weekday = $Calendar_weekday.clone();
-            
-            
+
+
             var $Calendar_day = $("#calendar.day").clone();
             $("#calendar.day").after($Calendar_day)
             var $calendar_day = $Calendar_day.clone()
@@ -59,43 +59,44 @@
 
             $Calendar_weekday.hide()
             $("#calendar.weekday").hide();
-            
+
             //not adjusting in css file
-            
+
             var $Calendar_nameday = $("#calendar.nameday").clone();
             $("#calendar.nameday").after($Calendar_nameday)
-            
-            
-            
-            
 
-            
+
+
+
+
+
             // cloning process not the same for everything you do
             function daysInMonth(iMonth, iYear)
             {
                 return 32 - new Date(iYear, iMonth, 32).getDate();
             }
-            
+
             function day_of_week(Month,iYear,idate){
-                return new Date(idate.toString() + "January," + iYear.toString()).getDay()
+              console.log((idate.toString() + " January, " + iYear.toString()));
+                return new Date(idate.toString() + " January,   " + iYear.toString()).getDay()
             }
-            
-            
+
+
             var days = daysInMonth(new Date().getMonth(),new Date().getFullYear());
-            
-            
-            
+
+
+
             while(days != 0){
-                
+
                 if(-(days-32) % 4 == 0){
                     $("#calendar.weekday:last").after($calendar_weekday.clone())
                     x_case = x_tab * (weekday   ) ;
                     y_case = (y_tab[1] * (weekday - 1 ) - (3* y_tab[1] * weekday)) - (y_tab[1] * (weekday )) + (weekday * 4)
-                    
+
                     if(weekday >= 3 ){
                         y_case += (y_tab[1]* 10) + (y_tab[1]*.19)
                     }
-                    
+
                     console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
                     if(weekday == 0){
                         calendar_adjustment = $("#calendar.weekday:last").offset().top;
@@ -107,23 +108,24 @@
                     }).append("<h3 class = 'weekdays' id = 'calendar' >" +  weekday_set[weekday ] + "</h3>")
                     // console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
                 }
-                var weekday = day_of_week("January",new Date().getFullYear(),(-(days-32)));
+                weekday = day_of_week("January",new Date().getFullYear(),(-(days-32)));
+
                 x_case = x_tab * weekday;
                 y_case = (y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7) -(7 * y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7)  )   - (y_tab[0] * (weekday - 1)))
-                
+
                 // the y alignment doesn't work as easily as x alignment, first you must subtract the  height several times and subtract the height times the days specific to the week and then involve the y_tab ratio again. then add 50 or length to put in the days
                 // console.log(y_case)
-                
+
                 $("#calendar.day_holder").append($calendar_day.clone());
                 $("#calendar.day:last").css({
                     left:x_case,
                     top:y_case
                 })
-                console.log(y_case)
+                // console.log(y_case)
                 $("#calendar.day:last").append("<h4 id = 'calendar' class = 'day'>" + (-(days-32)).toString() + "</h4>");
-                
+
                 days -= 1;
-                
+
             }
             console.log($("#calendar.weekday:last").css("height"))
             calendar_adjustment =  -(calendar_adjustment) - (parseInt($("#calendar.weekday:last").css("height").split(" ")[0]))
@@ -131,47 +133,47 @@
                 "margin-top":calendar_adjustment,
                 "height":$("#calendar.canvas").css("height")
             })
-            
+
             // calendar_adjustment to make it look right, the weeday classes were moving it down because day_holder is relative so it was relative to the inital positions of the day class
             //what makes jquery annoying is that when you add things to it it does not regard how it affect the atmosphere is gets added to, you should make something that controls the positions of objects in a webpage dimensions will definietely be too much for u something new altogether
-            
+
             });
         </script>
     </head>
     <body>
         <div class=" container well title" id ="title" >
-        
+
                 <a href ="./index.html" class = "title"  id ="title" style = "color:rgba(0,0,0,.5);">K.D.C Show Entertainment </a>
                 <!--for  some reason ,class from extenal css is not taking the color attr-->
-            
+
         </div>
         <div class ="canvas" >
             <h1 class ="title" >Calendar</h1>
             <div class = "line" ></div>
             <h2 class = "month" > January</h2>
-            
+
             <div class ="well weekday"></div>
-            
-                
-            
+
+
+
             <div class = "day_holder">
                 <div class = "day" ></div>
             </div>
-            
-            
-            
-            
+
+
+
+
         </div>
-        
+
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>
         </div>
         <div class = "container  nav_container " id = "index"  >
             <div class = "well navigator" id = "index">
                 <h3 id = "nav"></h3>
-                
+
             </div>
         </div>
 
-    
+
     </body>
