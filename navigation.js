@@ -112,7 +112,7 @@ var nav_holder;
                                 navigator_set[bug].stop(true).animate({
                                     "left":correct_format
                                 })
-                                // this code fixes all broken nav items, but waits for all recursive calls to make changes do, something about this
+                                // previous commit
 
                             })
                             return;

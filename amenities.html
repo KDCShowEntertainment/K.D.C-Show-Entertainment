@@ -1,0 +1,102 @@
+<!--tech cards are acting very weird the z-index is not working very well-->
+
+<html>
+    <head>
+        <script src="./jquery-1.10.2.js"></script>
+        <script src="./jquery-ui.js"></script>
+        <script src="./jquery_rolodex.js"></script>
+        <script src="./jquery_parallax.js"></script>
+        <script src="./jquery_rotate.js"></script>
+        <script src="./jquery_michael_toggle.js"></script>
+        <script src="./site_map_instruction.js"></script>
+        <script src="./navigation.js"></script>
+        <script src="./bootstrap.min.js"></script>
+        <script src="./dimension_parser.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=.21">
+        <link rel="stylesheet" href="./bootstrap.min.css">
+        <link rel="stylesheet" href="./sharon_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />-->
+        
+
+        
+        
+        <script>
+            $(document).ready(function() {
+                var ids = document.location.href.split("/");
+                console.log(ids[ids.length-1].split(".")[0])
+                
+                $("body :not([id])").attr("id",ids[ids.length-1].split(".")[0])
+                console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"))
+                
+                //for moving the tech card to a decent space away from the navigator
+                var nav_container_left = numberParse($(".nav_container").css("left"));
+                var navigator_width = numberParse($(".navigator").css("width"));
+                
+                
+                console.log(nav_container_left , navigator_width)
+                $(".tech_card").css("left",   (navigator_width + nav_container_left)* 2)
+                console.log($(".tech_card").css("left"))
+                
+                ///////////////////////////////////////////////////////////////////////////
+                
+                //tech card cloning process
+                var $tech_card =  $(".tech_card").clone();
+                $(".tech_card").append($tech_card);
+                var $tech_card_top = numberParse($(".tech_card:first").css("top"));
+                $(".tech_card:first").css("z-index",1);
+                $(".tech_card:first > * ").css({
+                    "z-index":1,
+                    "position":"relative"
+                    })
+                console.log($(".tech_card:first > img ").css("z-index"))
+                var $tech_card_z_index = 0;
+                $tech_card_z_index -= 1;
+                $tech_card.css({
+                    "top" : ($tech_card_top *  ($(".tech_card").length - 2)),
+                    "z-index": -1
+                    
+                    });
+                $(".tech_card").css({
+                    "z-index": $tech_card_z_index
+                    });
+                
+                ////////////////////////////////////////////////////////
+                //  z index functionality does not respond if its greater than zero might as well use zero becuase I do not how much tech cards there will be
+                // z-index is buggy altogether
+                /////////////////////////////////////////////////////////
+                
+            });
+        </script>
+    </head>
+    <body>
+        <div class=" container well title" id ="title" >
+        
+                <a href ="./index.html" class = "title" id ="title" style = "color:rgba(0,0,0,.5);">K.D.C Show Entertainment </a>
+                <!--for  some reason ,class from extenal css is not taking the color attr-->
+            
+        </div>
+        
+        <div class = "well title">
+            <h3 class = "title">Food that we offer</h3>
+        </div>
+        
+        <div class=" tech_card well" >
+                <img id="img_except2" style=" background-image:url('');margin-left:4em;">
+                <h1>FOOD</h1>
+                <div style="height:12.625em; width:310px; background-color:white; opacity:.8">
+                    <h4 style="text-align:center; font-size:20px"> HTML is the words you see on when you visit a website. It is also the framework and foundation for which everything is built. We use HTML as our measuring tool for building the website</h4>
+                </div>
+            </div>
+        
+        <div class = "container nav_header"  id = "index" >
+            <h1 class = "nav_header" id = "index">Navigation</h1>
+        </div>
+        <div class = "container nav_container " id = "index"  >
+            <div class = "well navigator" id = "index">
+                <h3 id ="nav">Home</h3>
+            </div>
+        </div>
+        
+    
+    </body>

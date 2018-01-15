@@ -267,7 +267,7 @@
                 background-size:100% 100%;
             }
 
-/*venues page            */
+/*story vote page            */
 
             h3#story_vote.title{
                 color:pink;
@@ -321,6 +321,29 @@
             #story_vote.story_heading{
                 text-align:center;
             }
+/*amenities page            */
+
+            div#amenities.title{
+                width:70%;
+                margin:auto;
+            }
+            
+            h3#amenities.title{
+                color:red;
+                text-align:center;
+            }
+            
+            #amenities.tech_card {
+                width: 24.5em;
+                height: 35em;
+                background-color:black;
+                border-radius: 50px;
+                position: absolute;
+                top: 244px;
+                
+                
+            }
+            
  /*from tobologz below */
 
             @font-face {
@@ -434,12 +457,7 @@
 
             }
 
-            h1 {
-              margin: 0em ;
-              font-size: 18em;
 
-              text-align: center;
-            }
 
             a.bio_class:hover,
             a.bio_class:focus {
