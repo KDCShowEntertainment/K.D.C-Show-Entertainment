@@ -30,41 +30,185 @@
                 console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"))
                 
                 //for moving the tech card to a decent space away from the navigator
+{
                 var nav_container_left = numberParse($(".nav_container").css("left"));
                 var navigator_width = numberParse($(".navigator").css("width"));
                 
                 
                 console.log(nav_container_left , navigator_width)
-                $(".tech_card").css("left",   (navigator_width + nav_container_left)* 2)
-                console.log($(".tech_card").css("left"))
+                $(".tech_card:first").css("margin-left",   (navigator_width + nav_container_left)* 2)
+                var tech_card_margin_left = numberParse($(".tech_card:first").css("margin-left"));
+                console.log(tech_card_margin_left)
+}
                 
+                ///////////////////////////////////////////////////////////////////////////
+                // seems to be an unstable way of moving things use margin-  [direction] instead
                 ///////////////////////////////////////////////////////////////////////////
                 
                 //tech card cloning process
-                var $tech_card =  $(".tech_card").clone();
-                $(".tech_card").append($tech_card);
+{
+
                 var $tech_card_top = numberParse($(".tech_card:first").css("top"));
-                $(".tech_card:first").css("z-index",1);
-                $(".tech_card:first > * ").css({
-                    "z-index":1,
-                    "position":"relative"
-                    })
+                var $tech_card_height = numberParse($(".tech_card:first").css("height"));
+                var $tech_card_top_choice;
+                var $tech_card_top_formatter = 1;
+                var $tech_card_top_formatter_first = $tech_card_top_formatter;
+                var $tech_card_left_choice = 0;
+                var tech_card_count = 23;
+                reset_executed = false;
+                var $tech_card_z_index = $(".nav_container").css("z-index") + tech_card_count;
+                $(".tech_card:first").css({
+                    "z-index":$tech_card_z_index
+                });
+                $(".tech_card:first").addClass("first_tech_card");
+                $(".tech_card:first").addClass($tech_card_top_formatter.toString());
+                var $tech_card =  $(".tech_card").clone();
+                $tech_card.removeClass("first_tech_card");
+                $(".tech_card").after($tech_card);
                 console.log($(".tech_card:first > img ").css("z-index"))
-                var $tech_card_z_index = 0;
                 $tech_card_z_index -= 1;
-                $tech_card.css({
-                    "top" : ($tech_card_top *  ($(".tech_card").length - 2)),
-                    "z-index": -1
+                $(".tech_card:last").css({
+                    // "top" : ($tech_card_top *  $tech_card_top_formatter),
+                    "margin-left":  tech_card_margin_left *  ($(".tech_card").length  ),
+                    "z-index": $tech_card_z_index
                     
                     });
-                $(".tech_card").css({
+                var $tech_card_clone = $tech_card.clone();
+                var tech_card_count = 23;
+                var tech_card_original_count = tech_card_count;
+                while(tech_card_count != 0) {
+                    
+                $(".tech_card:last").after($tech_card_clone.clone());
+                $(".tech_card:last").removeClass($tech_card_top_formatter_first.toString());
+                if(reset_executed == true){
+                    $(".tech_card:last").addClass("first_tech_card");
+                    reset_executed = false;
+                }
+                $tech_card_z_index -= 1;
+                $(".tech_card:last").css({
+                    "top":$tech_card_top_choice * $tech_card_top_formatter,
+                    "margin-left":  tech_card_margin_left *  ($(".tech_card").length - $tech_card_left_choice  ),
                     "z-index": $tech_card_z_index
+                    
                     });
+                    
+                    //proper adjustment of hashing classing replacing decimal with underspace
+                    if($tech_card_top_formatter % 1 != 0){
+                        $(".tech_card:last").addClass($tech_card_top_formatter.toString().split(".")[0] + "_" + $tech_card_top_formatter.toString().split(".")[1])
+                    }
+                    else {
+                        $(".tech_card:last").addClass($tech_card_top_formatter.toString());
+                    }
+                    
+                    ///////////////////////////////////////////////////////////////////////////
+                    
+                    //horizontal alignment of tech cards
+                    
+                if (  tech_card_count == 40 || tech_card_count == 37 || tech_card_count == 31 || tech_card_count == 26|| tech_card_count == 22 || tech_card_count == 15 || tech_card_count == 10 || tech_card_count == 7 || tech_card_count == 3){
+                    
+                    if(tech_card_count !=22){
+                        $tech_card_top_choice =$tech_card_height;
+                        $tech_card_top_formatter += 1;
+                    }
+                    
+                    else {
+                        $tech_card_top_choice =$tech_card_height;
+                        $tech_card_top_formatter += .5;
+                    }
+                        $tech_card_left_choice = (".tech_card").length - (tech_card_count - (".tech_card").length ) + (tech_card_original_count - 17);
+                        reset_executed = true;
+                        
+                    
+                    
+                }
+                    
+                ///////////////////////////////////////////////////////////////////////////
+                tech_card_count -= 1;
+                }
                 
+}
                 ////////////////////////////////////////////////////////
-                //  z index functionality does not respond if its greater than zero might as well use zero becuase I do not how much tech cards there will be
-                // z-index is buggy altogether
+                //  z-index was buggy because you did not put jquery after
+                //  $tech_card positioning is on a relational basis not relational if you change css but learn how to do this in the future
+                //  var $tech_card_left_choice
+                // on left balacing I do not know why 17 is the balacing number
+                // LEFT OFF, animation
                 /////////////////////////////////////////////////////////
+                
+                
+                // slide left animation and slide back animation
+{
+                var movement_array = {};
+                var option = {};
+                var $tech_card_width = numberParse($(".first_tech_card").css("width"));
+                var $tech_card_width_count = 0
+                var hover_even = "opened";
+                var $value_margin_left;
+                
+                $(".first_tech_card").mouseenter(function () {
+                    var this_classlist_3 = "." + $(this)["0"].classList[3];
+                    
+                    if(!$(this).hasClass(hover_even)){
+                        console.log($(this)["0"].classList.value)
+                        console.log(!$(this).hasClass(hover_even),hover_even)
+                        $(this).addClass(hover_even)
+                        
+                        
+
+                            option[this_classlist_3] = $.map($( this_classlist_3), function(value, index) {
+                                $value_margin_left =  $(value).css("margin-left")
+                                $(value).animate({
+                                    "margin-left":(($tech_card_width + tech_card_margin_left) *$tech_card_width_count) + (tech_card_margin_left )
+                                },1500)
+                                $tech_card_width_count += 1;
+                                return $value_margin_left;
+                            })
+                            $tech_card_width_count = 0;
+                        
+                        if (!(this_classlist_3 in movement_array)){
+                            movement_array[this_classlist_3]  = option[this_classlist_3];
+                        }
+                        
+                        console.log(movement_array,option)
+                        option = {};
+                        
+                        
+                        
+                    }
+                    
+                    else {
+                        $(this).removeClass(hover_even)
+                        console.log("hit")
+                        console.log(this_classlist_3,movement_array[this_classlist_3])
+                        $.map($( this_classlist_3), function(value, index) {
+                            $(value).animate({
+                                "margin-left":movement_array[this_classlist_3][index]
+                            },1500)
+                            
+                            
+                        
+                        });
+                    }
+                    
+                })
+                
+                
+                
+
+}
+                ////////////////////////////////////////////////////////
+                // need to keep it highlighted so developer knows which receives the hover
+                //need to replace the decimal point with a underscore becuase jquery thinks they would be two seperate classes
+                // movement array holds info about tech cards to reorder them
+                // $tech_card_width holds the width of the tech card
+                // $tech_card_width_count holds a count about how to spread the tech card
+                // hover_even is the flag used to bring the tech cards back to the original position
+                // $value_margin_left sends info to movement array as an array about the orginal positions of a tech card row
+                // option, for gaining first positions of tech card rows and logic lock into movement array
+                // is compatibile and responsive
+                ////////////////////////////////////////////////////////
+                
+                
                 
             });
         </script>
@@ -81,13 +225,15 @@
             <h3 class = "title">Food that we offer</h3>
         </div>
         
-        <div class=" tech_card well" >
+        <div class = "food_card_container">
+            <div class=" tech_card well" >
                 <img id="img_except2" style=" background-image:url('');margin-left:4em;">
-                <h1>FOOD</h1>
+                <h1 class = "food_card">FOOD</h1>
                 <div style="height:12.625em; width:310px; background-color:white; opacity:.8">
                     <h4 style="text-align:center; font-size:20px"> HTML is the words you see on when you visit a website. It is also the framework and foundation for which everything is built. We use HTML as our measuring tool for building the website</h4>
                 </div>
             </div>
+        </div>
         
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>

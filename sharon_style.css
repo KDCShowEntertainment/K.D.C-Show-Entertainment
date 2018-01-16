@@ -344,6 +344,9 @@
                 
             }
             
+            h1#amenities.food_card{
+                color:red;
+            }
  /*from tobologz below */
 
             @font-face {
