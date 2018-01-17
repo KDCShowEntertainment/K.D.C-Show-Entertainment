@@ -347,6 +347,24 @@
             h1#amenities.food_card{
                 color:red;
             }
+            
+/*tickets page            */
+
+            #tickets.moving_tickets{
+                height:30em;
+                border-radius:25px;
+                border:10px solid grey;
+            }
+            
+            #tickets.title{
+                text-align:center;
+                opacity:.75;
+            }
+            
+            #tickets.text{
+                text-align:center;
+                
+            }
  /*from tobologz below */
 
             @font-face {

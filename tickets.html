@@ -7,6 +7,7 @@
         <script src="./jquery_rolodex.js"></script>
         <script src="./jquery_parallax.js"></script>
         <script src="./jquery_rotate.js"></script>
+        <script src="./jquery_adv_clone.js"></script>
         <script src="./jquery_michael_toggle.js"></script>
         <script src="./site_map_instruction.js"></script>
         <script src="./navigation.js"></script>
@@ -27,7 +28,24 @@
                 console.log(ids[ids.length-1].split(".")[0])
                 
                 $("body :not([id])").attr("id",ids[ids.length-1].split(".")[0])
-                console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"))
+                console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"));
+                
+                //spaces between text items in ticket
+{
+                $("#tickets.text").before("<br/>")
+}
+                ///////////////////////////////////////////////////////////////
+                
+                //moving_tickets cloning process
+{
+                console.log($("#tickets.moving_tickets").adv_clone(5))
+}
+                
+                
+                
+                ///////////////////////////////////////////////////////////////
+                //made a function extenison since cloning is so hard
+                ///////////////////////////////////////////////////////////////
             });
         </script>
     </head>
@@ -38,6 +56,13 @@
                 <!--for  some reason ,class from extenal css is not taking the color attr-->
             
         </div>
+        
+    <div class="container well moving_tickets "  >
+        <h2 class = "title ">Tickets</h2>
+        <h2 class = "text">Single person</h2>
+        <h2 class = "text">$7.00</h2>
+
+    </div>
         
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>
