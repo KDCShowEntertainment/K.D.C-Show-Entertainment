@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="./bootstrap.min.css">
         <link rel="stylesheet" href="./sharon_style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />
+        <!--<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amatic+SC" />-->
         
 
         
@@ -37,15 +37,18 @@
                 ///////////////////////////////////////////////////////////////
                 
                 //moving_tickets cloning process
-{
+{               var i = 1;
+                while(i != 0){
                 console.log($("#tickets.moving_tickets").adv_clone(5))
+                
+                
+                
+                i -=1;
+                }
 }
-                
-                
-                
                 ///////////////////////////////////////////////////////////////
                 //made a function extenison since cloning is so hard
-                ///////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////
             });
         </script>
     </head>
