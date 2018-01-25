@@ -1,9 +1,10 @@
-// in this version repeated calls to adv_clones are perfected, and jquery makes the exact number of clones to the page as desired, with the total in all of the window document
+// in this version if the developer tries to break the function by using zero, the function know when to remove the first elemt of the function
     //capabilities:core cloning functionality
     //            : cloning as many items as needed
     //            : returns a length of all the clones
     //            : responds for single, multiple and mixed calls of any length
     //            : return an array of all the desired clones
+    //            : resists zero error breaking
 
     
     //planned work : seperation of clones into certain groups and returning an array of the groups
@@ -17,6 +18,7 @@
     
 
 var call = 0;
+var call_amounts = [];
     jQuery.fn.extend({
         adv_clone:function(michael){
             //jquery's cloning function does not work as intended, it thinks a call to more clones, is a call to the same cloned object, when it finally figures things out it is not smart enough to know not to clone the selected list. This method returns an array of how many times you wanted the object to be cloned, for further variation as you please
@@ -40,8 +42,10 @@ var call = 0;
             
                 //if its zero should we throw an error or delete the selection
                 var $clone_count = michael -4;
-                if($clone_count == -4 ){
-                    $(this).remove()
+                if($clone_count == -4 && call == 1 ){
+                    // $(this.selector + ":first").remove()
+                    call_amounts.push(michael)
+                    return;
                 }
                 
                 ////////////////////////////////////////////////////////////////
@@ -75,11 +79,13 @@ var call = 0;
                 
                 
 
-                
-                if(call == 1 ){
+                console.log()
+                if(call == 1 || call == 2 && call_amounts[0] == 0 ){
                     $(this.selector + ":first").remove()
-                    console.log(call)
+                    
                 }
+                console.log(call,call_amounts)
+                call_amounts.push(michael)
                 return $.map($(this.selector + (":not(.delete)")),function(value,index){
                    return $(value)
                 });

@@ -4,15 +4,16 @@
     <head>
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
+        <script src="./dimension_parser.js"></script>
+        <script src="./global_info_helper.js"></script>
         <script src="./jquery_rolodex.js"></script>
         <script src="./jquery_parallax.js"></script>
         <script src="./jquery_rotate.js"></script>
         <script src="./jquery_adv_clone.js"></script>
+        <script src="./jquery_carousel.js"></script>
         <script src="./jquery_michael_toggle.js"></script>
         <script src="./site_map_instruction.js"></script>
         <script src="./navigation.js"></script>
-        <script src="./bootstrap.min.js"></script>
-        <script src="./dimension_parser.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=.21">
         <link rel="stylesheet" href="./bootstrap.min.css">
         <link rel="stylesheet" href="./sharon_style.css">
@@ -23,6 +24,7 @@
         
         
         <script>
+
             $(document).ready(function() {
                 var ids = document.location.href.split("/");
                 console.log(ids[ids.length-1].split(".")[0])
@@ -36,18 +38,27 @@
 }
                 ///////////////////////////////////////////////////////////////
                 
-                //moving_tickets cloning process
-{               var i = 1;
+                //moving_tickets cloning and carousel process
+{               var i = 5;
                 while(i != 0){
-                console.log($("#tickets.moving_tickets").adv_clone(5))
-                
-                
-                
+                $("#tickets.moving_tickets").adv_clone(1)
+                $("#tickets.moving_tickets:last > h2:first").text(i)
                 i -=1;
                 }
+                
+                $("#tickets.moving_tickets").carousel({
+                    left:'.glyphicon-chevron-left',
+                    right:'.glyphicon-chevron-right',
+                    width: browser_window.outerWidth,
+                    height:numberParse($("#tickets.moving_tickets:last").css("height")),
+                    rate:1000
+                    
+                });
 }
                 ///////////////////////////////////////////////////////////////
                 //made a function extenison since cloning is so hard
+                // question do i need my items pre-rendered or should I have my carousel method work with making clones in the process, I want my methods to be standalone so people wont have to download my whole library in order to use it, I might make a library of my functions
+                //need to comment out bootstrap.min.js/ hopefully we do not use it
                 //////////////////////////////////////////////////////////////
             });
         </script>
@@ -66,6 +77,21 @@
         <h2 class = "text">$7.00</h2>
 
     </div>
+    
+    
+      <!--<span class="glyphicon glyphicon-chevron-left " aria-hidden="true" ></span>-->
+      <!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+      
+    <a class=" carousel-control"  role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"  ></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <a class="  carousel-control"  role="button" data-slide="next" style = "right: 0; left: auto;">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span>
+      <span class="sr-only">Next</span>
+    </a>
+    
         
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>
@@ -76,6 +102,6 @@
             </div>
         </div>
         
-    
+    <!--<script src="./global_info_helper.js"></script>-->
     </body>
 </html>

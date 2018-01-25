@@ -11,6 +11,7 @@
         <script src="./site_map_instruction.js"></script>
         <script src="./navigation.js"></script>
         <script src="./bootstrap.min.js"></script>
+        <script src="./dimension_parser.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=.21">
         <link rel="stylesheet" href="./bootstrap.min.css">
         <link rel="stylesheet" href="./sharon_style.css">
@@ -127,8 +128,9 @@
                 days -= 1;
 
             }
-            console.log($("#calendar.weekday:last").css("height"))
-            calendar_adjustment =  -(calendar_adjustment) - (parseInt($("#calendar.weekday:last").css("height").split(" ")[0]))
+            console.log($("#calendar.weekday:last").css("height"),calendar_adjustment)
+            // calendar_adjustment =  -(calendar_adjustment) - (parseInt($("#calendar.weekday:last").css("height").split(" ")[0]) )
+            calendar_adjustment =  -(calendar_adjustment)
             $("div#calendar.day_holder").css({
                 "margin-top":calendar_adjustment,
                 "height":$("#calendar.canvas").css("height")

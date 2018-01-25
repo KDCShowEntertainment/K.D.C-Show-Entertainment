@@ -6,6 +6,16 @@
               font-style: normal;
             }
 
+            @font-face {
+              font-family: 'bootstrap_font';
+              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
+                     url('./glyphicons-halflings-regular.woff') format('woff'),
+                     url('./glyphicons-halflings-regular.ttf') format('truetype');
+
+              font-weight: normal;
+              font-style: normal;
+            }
+
 
             div.title{
                 border-radius:25px;
@@ -162,6 +172,7 @@
             #calendar.title {
                 color:red;
                 font-size:7em;
+                text-align:center;
 
             }
 
@@ -354,6 +365,7 @@
                 height:30em;
                 border-radius:25px;
                 border:10px solid grey;
+                position:relative;
             }
             
             #tickets.title{
@@ -365,17 +377,49 @@
                 text-align:center;
                 
             }
+            
+            #tickets.glyphicon{
+                font-family:bootstrap_font;
+                color:magenta;
+                font-size:3em;
+                position:relative;
+                
+            }
+            
+            #tickets.carousel-control{
+                z-index:30;
+                left:20%;
+                height:0em;
+                
+            }
+            /*had to make height zero becuase i do not want to glyphicons to reach when its hovered over*/
+            /*made z-index 30 becuase it seems you need carousel control in order to reach the glyphicon*/
+            #tickets.glyphicon-chevron-left{
+                top:7em;
+                
+                left:-110%;
+            }
+            
+            #tickets.glyphicon-chevron-right{
+                top:7em;
+                right: 0;
+                left: auto;
+                z-index:30;
+            }
+            
+            /*.my_right{*/
+            /*    right: 0;*/
+            /*    left: auto;*/
+            /*    z-index:30;*/
+            /*}*/
+
+            /*.my_left{*/
+
+            /*    z-index:30;*/
+            /*}            */
  /*from tobologz below */
 
-            @font-face {
-              font-family: 'bootstrap_font';
-              src: url('./glyphicons-halflings-regular.woff2') format('woff2'),
-                     url('./glyphicons-halflings-regular.woff') format('woff'),
-                     url('./glyphicons-halflings-regular.ttf') format('truetype');
 
-              font-weight: normal;
-              font-style: normal;
-            }
 
             @viewport{
                 min-zoom:50%
