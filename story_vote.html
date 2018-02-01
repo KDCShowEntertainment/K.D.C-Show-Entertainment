@@ -4,6 +4,7 @@
         <script src="./jquery-1.10.2.js"></script>
         <script src="./jquery-ui.js"></script>
         <script src="./jquery_rolodex.js"></script>
+        <script src="./jquery_full_page.js"></script>
         <script src="./jquery_parallax.js"></script>
         <script src="./jquery_rotate.js"></script>
         <script src="./jquery_michael_toggle.js"></script>
@@ -26,6 +27,8 @@
                 
                 $("body :not([id])").attr("id",ids[ids.length-1].split(".")[0])
                 console.log($("body  [id = " + ids[ids.length-1].split(".")[0]+ "]"))
+                
+                $(".story_holder").full_page();
             });
         </script>
     </head>
@@ -36,19 +39,18 @@
                 <!--for  some reason ,class from extenal css is not taking the color attr-->
             
         </div>
+        
         <div class = "container title">
-            <h3 class = "title">Which work would you like to see in our next popup?</h3>
+            <!--<h3 class = "title">Which work would you like to see in our next popup?</h3>-->
         </div>
         
-    <div class="container well story_holder story_holder_1"  >
-        <div class= "container story">
-            <img  class="center-block story story_1" src = "./PEXELS_Images/story_pics/story_1.png"    />
+        <div class="container well story_holder story_holder_1"  >
+            <div class= "container story">
+                <img  class="center-block story story_1" src = "./PEXELS_Images/story_pics/story_1.png"    />
+            </div>
+            <h2 class = "story_heading">The genie kid</h2>
         </div>
-    <h2 class = "story_heading">The genie kid</h2>
-
-        
-        
-    </div>
+    
         <div class = "container nav_header"  id = "index" >
             <h1 class = "nav_header" id = "index">Navigation</h1>
         </div>

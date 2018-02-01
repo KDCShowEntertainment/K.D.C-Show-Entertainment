@@ -1,4 +1,4 @@
-//this function wraps all carousel items into one carousel div to keep it seperate from the rest of the page and enable it to display on smallaer scales
+//remove reliances or other external js libaray or imported them into file
     //capabilities:full carousel functionality
     //            :dual options
 
@@ -23,6 +23,7 @@
 
 var call = 0;
 var call_amounts = [];
+var dimension;
 
 
     jQuery.fn.extend({
@@ -30,6 +31,43 @@ var call_amounts = [];
             // bootstrap has a carousel function but you need the bootstrap.js file to use it which can cause problems, this takes a selector of supposed associated objects for the carousel  along with left and right event control selectors to have the carousel animation
             
             //argument check and initization
+            
+    {
+        //helper function
+        function numberParse(dimension){
+            dimension = parseFloat(dimension.split("p")[0])
+            return dimension;
+        }
+        ///////////////////////////////////////////////////////////////////////////////////
+        // for returning the number of an dimenision not in number format only px
+        ///////////////////////////////////////////////////////////////////////////////////
+        
+        
+        // finds location of important items using this function
+        function BrowserCheck()
+        {
+            var N= navigator.appName, ua= navigator.userAgent, tem;
+            var M= ua.match(/(opera|chrome|safari|firefox|msie|trident)\/?\s*(\.?\d+(\.\d+)*)/i);
+            if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) {M[2]=tem[1];}
+            M= M? [M[1], M[2]]: [N, navigator.appVersion,'-?'];
+            return M;
+        }
+        
+        var browser = [BrowserCheck()];
+        //this will be an array, containing difference among browsers and their versions
+
+        
+        var browser_window = window;
+        if(browser[0][0] == "Firefox" && parseFloat(browser[0][1]) >= 57 ){
+          browser_window = window.top;
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////
+        // finding where screen dimensions are
+        ///////////////////////////////////////////////////////////////////////////////////
+        
+        
+    }
             if (isNaN(michael.rate)){
                 michael.rate = 750;
             }
@@ -85,7 +123,9 @@ var call_amounts = [];
             $("div.carousel_choice").css({
                 height:michael.height,
                 width:michael.width,
+                "position":"relative",
                 overflow:"hidden"
+                
             })
             carousel_item_max_left = numberParse($($(this).selector + ":last").css("left"));
             
