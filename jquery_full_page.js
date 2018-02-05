@@ -1,6 +1,7 @@
-// in this version we have a reliance of outside css to enable the image fading or changing animation, we need an svg of the animation end and we need to make keyframes, so internailize in the newer volumes
+// universal application when it comes to choosing images and colors
     //capabilities: outer body resizing
     //            : script awareness of position css attribute limiting its ablilty to change itself
+    //            :keyframnes embedding
 
 
     
@@ -11,14 +12,48 @@
     
     //far in the future: inner object resizing
     //                 : main object resizing
+    //                  : svg plugin embed
+    //                  :query for everything in the full page
+
+    // properties
+    //  svg_path, path to the svg image of final result when transforming from image to color, needed for extension to work
+    //  image_total_time time it takes for base image to change default is 4s
+    //  image_repeats: how many times image change repeats by default it is ne
 
 
 var call = 0;
 var call_amounts = [];
+
+
+
+
+
+
+
     jQuery.fn.extend({
         full_page:function(michael){
             // this function is a special animation, where it spreads the object to the width of the page and by default makes all the child elements disappear, follow instructions or are edited in their display or content
 
+            // embed keyframes css
+{
+        var images = []
+        images.push($(this).css("background-image").split("(")[1].split(")")[0])
+        var final_color = ["white"]
+        $("head").append("<style></style>")
+        images.forEach(function(image,index){
+            
+        $("style").append("@-webkit-keyframes mymove { from { background-image:url("+ images[index] +");} to {background-color:" + final_color[index]+ ";}}@keyframes mymove {from { background-image:url(" + images[index] + ");}to {background-color:" + final_color[index]+ ";}}")
+        })
+}
+            ////////////////////////////////////////////////////////////////////
+            // needed for full page animation
+            // images is an array, which will later hold info about the selectors children
+            // final color final desired color in animation
+            ////////////////////////////////////////////////////////////////////
+            
+            
+            
+            
             //init settings
 {
             var full_page_flag = false;
@@ -26,9 +61,26 @@ var call_amounts = [];
                 full_page_flag = true;
 
             }
+            
+            if(michael.svg_path === undefined){
+                console.error("need an svg of the final transition for it to work")
+                return
+                
+            }
+            
+            if(michael.image_total_time === undefined){
+                michael.image_total_time = "4s"
+            }
+            
+            if(michael.image_repeats === undefined){
+                michael.image_repeats = "1"
+            }
+
+            
+            
 }
             //////////////////////////////////////////////////////////////
-            // if the selction position is static, we're going to change it to relative
+            // if the selction position is not absolute, we're going to change it to absolute
             //////////////////////////////////////////////////////////////
 
 
@@ -46,9 +98,7 @@ var call_amounts = [];
                 }
                 
                 
-                // $(this).css({
-                //     "top":"0%"
-                // })
+
             
                 $(this).animate({
                     "height":$("body").css("height"),
@@ -56,24 +106,21 @@ var call_amounts = [];
                     "top":"0%",
                     "left":"0%"
                     
-                    // "background-image":"linear-gradient(-135deg,#1400c8,#b900b4,#f50000)"
-                    // "background-size": $("body").css("width").toString(),
-                    // "background-size":"cover"
-                   
+
                 },2000)
                 
-                // .removeClass("story_holder_1").addClass("story_holder_1_change");
+                
                 
                 $(this).css({
                     
-                    // "transition": "background 5s linear",
-                    //  "-webkit-transition": "background 0.5s linear",
+                    "background-image":"url(" + michael.svg_path + ")",
                     "background-size":"cover",
-                    // "-webkit-animation": "mymove 2s 1",
-                    "animation": "mymove 4s 1",
+                    "-webkit-animation": "mymove " +  michael.image_total_time +  " " + michael.image_repeats,
+                    "animation": "mymove " +  michael.image_total_time +  " " + michael.image_repeats,
                     
                     },$(this).css({
                         "background-color":"white"
+                        
                     }))
                 
                 // inner pictures (will setup control for this later)

@@ -314,8 +314,8 @@
             }
 
             #story_vote.story_holder_1{
-                background-image:url("./PEXELS_Images/blank.svg");
-                background-color:blue;
+                background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");
+                background-color:white;
                 
 
             }
@@ -326,29 +326,34 @@
             }
             
 
-            /* Chrome, Safari, Opera */
-            @-webkit-keyframes mymove {
-                  from {
-                    background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpg");
-                    background-color:blue;
-                }
-                  to {
-                    /*background-image:url("./PEXELS_Images/story_pics/story_holder_1.svg");*/
-                    background-color:white;
-                  }
-            }
+            /* Chrome, Safari, Opera*/
+            /*@-webkit-keyframes mymove {*/
+            /*      from {*/
+            /*        background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");*/
+            /*        background-color:blue;*/
+            /*    }*/
+            /*      to {*/
+            /*        background-image:url("./PEXELS_Images/story_pics/story_holder_1.svg");*/
+            /*        background-color:white;*/
+            /*      }*/
+            /*}*/
             
-            /* Standard syntax */
-            @keyframes mymove {
-                  from {
-                    background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");
-                    /*background-color:blue;*/
-                }
-                  to {
-                    /*background-image:url("./PEXELS_Images/story_pics/story_holder_1.svg");*/
-                    background-color:white;
-                  }
-            }
+            /* Standard syntax*/
+            /*@keyframes mymove {*/
+            /*      from {*/
+            /*        background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");*/
+            /*        background:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");*/
+            /*        background-color:blue;*/
+            /*        background:element(#svg);*/
+            /*    }*/
+            /*      to {*/
+            /*        background-image:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");*/
+                    
+            /*        background-color:url("./PEXELS_Images/story_pics/story_holder_1.jpeg");*/
+            /*        background:element(#svg);*/
+            /*        background-color:white;*/
+            /*      }*/
+            /*}*/
 
             #story_vote.story_1{
 
