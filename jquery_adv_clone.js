@@ -1,13 +1,14 @@
-// in this version if the developer tries to break the function by using zero, the function know when to remove the first elemt of the function
+
+// in this version developer has capability of adding classes to the clones by selection, not by range to identify them when needed
     //capabilities:core cloning functionality
     //            : cloning as many items as needed
     //            : returns a length of all the clones
     //            : responds for single, multiple and mixed calls of any length
     //            : return an array of all the desired clones
-    //            : resists zero error breaking
+    //            : seperation of clones into certain groups
 
     
-    //planned work : seperation of clones into certain groups and returning an array of the groups
+    //planned work
     
 
     
@@ -18,34 +19,47 @@
     
 
 var call = 0;
-var call_amounts = [];
     jQuery.fn.extend({
         adv_clone:function(michael){
             //jquery's cloning function does not work as intended, it thinks a call to more clones, is a call to the same cloned object, when it finally figures things out it is not smart enough to know not to clone the selected list. This method returns an array of how many times you wanted the object to be cloned, for further variation as you please
             
-                //writitng down function call amound
+                //writitng down function call amount
                 call ++;
                 //////////////////////////////////////////////////////////////
                 
+                
+                
+                {
+                    $.each(function)
+                    console.log(UI)
+                }
                 //determining argument type
+                var $clone_count
                 if(typeof(michael) == "number"){
                     var count  = michael;
+                    $clone_count = michael -4;
                     
                     
                     
                 }
                 
+                else if(typeof(michael) == "object"){
+                    var count = parseInt(michael.items)
+                    $clone_count = parseInt(michael.items) -4;
+                    console.log(count)
+                    
+                }
                 
                 ////////////////////////////////////////////////////////////////
                 //becuase we will be removing the first item
+                //if item is an object, then the developer wants identification among the clones
+                // the michael variable can be of different types so all initalizating working with michael must be done here
                 ////////////////////////////////////////////////////////////////
             
                 //if its zero should we throw an error or delete the selection
-                var $clone_count = michael -4;
-                if($clone_count == -4 && call == 1 ){
-                    // $(this.selector + ":first").remove()
-                    call_amounts.push(michael)
-                    return;
+                
+                if($clone_count == -4 ){
+                    $(this).remove()
                 }
                 
                 ////////////////////////////////////////////////////////////////
@@ -79,19 +93,31 @@ var call_amounts = [];
                 
                 
 
-                console.log()
-                if(call == 1 || call == 2 && call_amounts[0] == 0 ){
+                
+                if(call == 1 ){
                     $(this.selector + ":first").remove()
-                    
+                    console.log(call)
                 }
-                console.log(call,call_amounts)
-                call_amounts.push(michael)
                 return $.map($(this.selector + (":not(.delete)")),function(value,index){
-                   return $(value)
+                    if(michael.specifiers != undefined){
+                        michael.specifiers.forEach(function(spec,selec) {
+                            spec.forEach(function (val,ind) {
+                                if(ind != 0){
+                                    if(index == val -1){
+                                        $(value).addClass(spec[0]);
+                                    }
+                                }
+                            });
+                            
+                        });
+                        
+                    }
+                    return $(value)
                 });
                     
                 ////////////////////////////////////////////////////////////////
-                // for future michael will turn into an object determine if michael is an object or the numbers count
+                // if the specifier propery is used the plugin will add classes based on the given indexes not a range which we will work on later
+                // this method uses plenty of energy, find something that does less
                 // last clone represents last cloned item
                 // for two copies you must equal call is two becuase it needs to refer to the clone clone as the second clone, its recusive, as there is a new last, thats why the first clone can clone
                 // same for one jquery is simply cloning the last copy of each so the first copy is okay
@@ -101,5 +127,16 @@ var call_amounts = [];
         
     });
     
+var addFnCounter = function(target){
+    var swap = target;
+    var count = 0;
+    return function(){
+        swap.apply(null);
+        count++;
+        console.log("func has been called " + count + " times");
+        console.log("\n");
+    };
+};
 
-
+addFnCounter($().adv_clone);
+    

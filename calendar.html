@@ -7,6 +7,9 @@
         <script src="./jquery_rolodex.js"></script>
         <script src="./jquery_parallax.js"></script>
         <script src="./jquery_rotate.js"></script>
+        <script src="./jquery_adv_clone.js"></script>
+        <script src="./jquery_pretty_print.js"></script>
+        <script src="./jquery_carousel.js"></script>
         <script src="./jquery_michael_toggle.js"></script>
         <script src="./site_map_instruction.js"></script>
         <script src="./navigation.js"></script>
@@ -42,26 +45,14 @@
             });
             //taking what empty space is left for calendar days
             console.log($("#calendar.day").css("height"),$("#calendar.day").css("width"))
-            x_tab = parseInt($("#calendar.day:last").css("width").split("p")[0])
-            y_tab = [parseInt($("#calendar.day:last").css("height").split("p")[0]),parseInt($("#calendar.weekday:last").css("height").split("p")[0])]
+            x_tab = numberParse($("#calendar.day:last").css("width"))
+            y_tab = [numberParse($("#calendar.day:last").css("height").split("p")[0]),parseInt($("#calendar.weekday:last").css("height").split("p")[0])]
+            
+            
 
 
-            var $Calendar_weekday = $("#calendar.weekday").clone();
-            $("#calendar.weekday").after($Calendar_weekday)
-            var $calendar_weekday = $Calendar_weekday.clone();
+    
 
-
-            var $Calendar_day = $("#calendar.day").clone();
-            $("#calendar.day").after($Calendar_day)
-            var $calendar_day = $Calendar_day.clone()
-            // $("#calendar.day:first").hide();
-            $Calendar_day.hide()
-            $("#calendar.day").hide();
-
-            $Calendar_weekday.hide()
-            $("#calendar.weekday").hide();
-
-            //not adjusting in css file
 
             var $Calendar_nameday = $("#calendar.nameday").clone();
             $("#calendar.nameday").after($Calendar_nameday)
@@ -84,50 +75,90 @@
 
 
             var days = daysInMonth(new Date().getMonth(),new Date().getFullYear());
+            
+            $("#calendar.weekday").css({
+                "z-index":"100",
+                "margin":"0"
+                
+            }).adv_clone({
+                items:"7",
+                UI:$().draggable
+            })
+            
+            
+            $("#calendar.day").css({
+                "z-index":"100",
+                "margin-bottom":"0"
+                
+            }).adv_clone({
+                items:days,
+                UI:$().draggable
+            })
+            
+        
+            $("#calendar.canvas").pretty_print({
+                objects:$("#calendar.weekday"),
+                x_spacing:"0px",
+                y_spacing:"0px",
+                indent:"0px",
+                
+                
+            })
+            
+            $("#calendar.canvas").pretty_print({
+                objects:$("#calendar.day"),
+                indent:"0px",
+                x_spacing:"0px",
+                y_spacing:"0px",
+                
+                
+            })
+            
+            
 
 
 
-            while(days != 0){
+            // while(days != 0){
 
-                if(-(days-32) % 4 == 0){
-                    $("#calendar.weekday:last").after($calendar_weekday.clone())
-                    x_case = x_tab * (weekday   ) ;
-                    y_case = (y_tab[1] * (weekday - 1 ) - (3* y_tab[1] * weekday)) - (y_tab[1] * (weekday )) + (weekday * 4)
+            //     if(-(days-32) % 4 == 0){
+                    
+            //         x_case = x_tab * (weekday   ) ;
+            //         y_case = (y_tab[1] * (weekday - 1 ) - (3* y_tab[1] * weekday)) - (y_tab[1] * (weekday )) + (weekday * 4)
 
-                    if(weekday >= 3 ){
-                        y_case += (y_tab[1]* 10) + (y_tab[1]*.19)
-                    }
+            //         if(weekday >= 3 ){
+            //             y_case += (y_tab[1]* 10) + (y_tab[1]*.19)
+            //         }
 
-                    console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
-                    if(weekday == 0){
-                        calendar_adjustment = $("#calendar.weekday:last").offset().top;
-                    }
-                    //to help in day_holder adjustment
-                    $("#calendar.weekday:last").css({
-                        left:x_case ,
-                        top: y_case
-                    }).append("<h3 class = 'weekdays' id = 'calendar' >" +  weekday_set[weekday ] + "</h3>")
-                    // console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
-                }
-                weekday = day_of_week("January",new Date().getFullYear(),(-(days-32)));
+            //         console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
+            //         if(weekday == 0){
+            //             calendar_adjustment = $("#calendar.weekday:last").offset().top;
+            //         }
+            //         //to help in day_holder adjustment
+            //         $("#calendar.weekday:last").css({
+            //             left:x_case ,
+            //             top: y_case
+            //         }).append("<h3 class = 'weekdays' id = 'calendar' >" +  weekday_set[weekday ] + "</h3>")
+            //         // console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
+            //     }
+            //     weekday = day_of_week("January",new Date().getFullYear(),(-(days-32)));
 
-                x_case = x_tab * weekday;
-                y_case = (y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7) -(7 * y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7)  )   - (y_tab[0] * (weekday - 1)))
+            //     x_case = x_tab * weekday;
+            //     y_case = (y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7) -(7 * y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7)  )   - (y_tab[0] * (weekday - 1)))
 
-                // the y alignment doesn't work as easily as x alignment, first you must subtract the  height several times and subtract the height times the days specific to the week and then involve the y_tab ratio again. then add 50 or length to put in the days
-                // console.log(y_case)
+            //     // the y alignment doesn't work as easily as x alignment, first you must subtract the  height several times and subtract the height times the days specific to the week and then involve the y_tab ratio again. then add 50 or length to put in the days
+            //     // console.log(y_case)
 
-                $("#calendar.day_holder").append($calendar_day.clone());
-                $("#calendar.day:last").css({
-                    left:x_case,
-                    top:y_case
-                })
-                // console.log(y_case)
-                $("#calendar.day:last").append("<h4 id = 'calendar' class = 'day'>" + (-(days-32)).toString() + "</h4>");
+            //     $("#calendar.day_holder").append($calendar_day.clone());
+            //     $("#calendar.day:last").css({
+            //         left:x_case,
+            //         top:y_case
+            //     })
+            //     // console.log(y_case)
+            //     $("#calendar.day:last").append("<h4 id = 'calendar' class = 'day'>" + (-(days-32)).toString() + "</h4>");
 
-                days -= 1;
+            //     days -= 1;
 
-            }
+            // }
             console.log($("#calendar.weekday:last").css("height"),calendar_adjustment)
             // calendar_adjustment =  -(calendar_adjustment) - (parseInt($("#calendar.weekday:last").css("height").split(" ")[0]) )
             calendar_adjustment =  -(calendar_adjustment)

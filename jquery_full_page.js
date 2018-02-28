@@ -39,7 +39,10 @@ var call_amounts = [];
         var images = []
         images.push($(this).css("background-image").split("(")[1].split(")")[0])
         var final_color = ["white"]
-        $("head").append("<style></style>")
+        
+        if ($("head style").length == 0){
+            $("head").append("<style></style>")
+        }
         images.forEach(function(image,index){
             
         $("style").append("@-webkit-keyframes mymove { from { background-image:url("+ images[index] +");} to {background-color:" + final_color[index]+ ";}}@keyframes mymove {from { background-image:url(" + images[index] + ");}to {background-color:" + final_color[index]+ ";}}")
