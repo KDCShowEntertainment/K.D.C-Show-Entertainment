@@ -69,22 +69,26 @@
             }
 
             function day_of_week(Month,iYear,idate){
-              console.log((idate.toString() + " January, " + iYear.toString()));
-                return new Date(idate.toString() + " January,   " + iYear.toString()).getDay()
+              console.log((idate.toString() + " March, " + iYear.toString()));
+                return new Date(idate.toString() + " March,   " + iYear.toString()).getDay()
             }
 
 
             var days = daysInMonth(new Date().getMonth(),new Date().getFullYear());
             
-            $("#calendar.weekday").css({
+            var calendar_adjustment = ($("#calendar.weekday").css({
                 "z-index":"100",
                 "margin":"0"
                 
             }).adv_clone({
                 items:"7",
-                UI:$().draggable
-            })
+                UI:"draggable"
+            }).length - 1) * numberParse($("#calendar.weekday").css("height"))
             
+            $.map($("#calendar.weekday"),function(day,index){
+                $(day).append("<h3 class = 'weekdays' id = 'calendar' >" +  weekday_set[index ] + "</h3>")
+                
+            })
             
             $("#calendar.day").css({
                 "z-index":"100",
@@ -92,10 +96,12 @@
                 
             }).adv_clone({
                 items:days,
-                UI:$().draggable
+                UI:["draggable","resizable"]
             })
             
-        
+            console.log(calendar_adjustment)
+            
+
             $("#calendar.canvas").pretty_print({
                 objects:$("#calendar.weekday"),
                 x_spacing:"0px",
@@ -134,13 +140,10 @@
             //             calendar_adjustment = $("#calendar.weekday:last").offset().top;
             //         }
             //         //to help in day_holder adjustment
-            //         $("#calendar.weekday:last").css({
-            //             left:x_case ,
-            //             top: y_case
-            //         }).append("<h3 class = 'weekdays' id = 'calendar' >" +  weekday_set[weekday ] + "</h3>")
+            //         $("#calendar.weekday:last").append("<h3 class = 'weekdays' id = 'calendar' >" +  weekday_set[weekday ] + "</h3>")
             //         // console.log($("#calendar.weekday:last").offset().top,weekday_set[weekday],weekday,$("#calendar.weekday:last").css("top"))
             //     }
-            //     weekday = day_of_week("January",new Date().getFullYear(),(-(days-32)));
+            //     weekday = day_of_week("February",new Date().getFullYear(),(-(days-32)));
 
             //     x_case = x_tab * weekday;
             //     y_case = (y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7) -(7 * y_tab[0] * (parseInt(((-(days-32) )) - weekday)/7)  )   - (y_tab[0] * (weekday - 1)))
@@ -148,28 +151,36 @@
             //     // the y alignment doesn't work as easily as x alignment, first you must subtract the  height several times and subtract the height times the days specific to the week and then involve the y_tab ratio again. then add 50 or length to put in the days
             //     // console.log(y_case)
 
-            //     $("#calendar.day_holder").append($calendar_day.clone());
-            //     $("#calendar.day:last").css({
-            //         left:x_case,
-            //         top:y_case
-            //     })
+  
             //     // console.log(y_case)
             //     $("#calendar.day:last").append("<h4 id = 'calendar' class = 'day'>" + (-(days-32)).toString() + "</h4>");
 
             //     days -= 1;
 
             // }
-            console.log($("#calendar.weekday:last").css("height"),calendar_adjustment)
+            
             // calendar_adjustment =  -(calendar_adjustment) - (parseInt($("#calendar.weekday:last").css("height").split(" ")[0]) )
-            calendar_adjustment =  -(calendar_adjustment)
+            
+            
+            
+            
             $("div#calendar.day_holder").css({
-                "margin-top":calendar_adjustment,
+                
+                "top":-calendar_adjustment,
                 "height":$("#calendar.canvas").css("height")
             })
 
             // calendar_adjustment to make it look right, the weeday classes were moving it down because day_holder is relative so it was relative to the inital positions of the day class
             //what makes jquery annoying is that when you add things to it it does not regard how it affect the atmosphere is gets added to, you should make something that controls the positions of objects in a webpage dimensions will definietely be too much for u something new altogether
+            
+            // readjustting the days position on the page
+            
+            {
 
+            }
+            /////////////////////////////////////////////////////////////////////////////
+            //
+            /////////////////////////////////////////////////////////////////////////////
             });
         </script>
     </head>

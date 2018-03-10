@@ -489,7 +489,8 @@ $.widget.bridge = function( name, object ) {
 		var isMethodCall = typeof options === "string",
 			args = widget_slice.call( arguments, 1 ),
 			returnValue = this;
-
+        
+        
 		if ( isMethodCall ) {
 			this.each(function() {
 				var methodValue,
@@ -514,14 +515,14 @@ $.widget.bridge = function( name, object ) {
 				}
 			});
 		} else {
-
 			// Allow multiple hashes to be passed on init
 			if ( args.length ) {
 				options = $.widget.extend.apply( null, [ options ].concat(args) );
 			}
-
+            console.log(this)
 			this.each(function() {
 				var instance = $.data( this, fullName );
+				
 				if ( instance ) {
 					instance.option( options || {} );
 					if ( instance._init ) {

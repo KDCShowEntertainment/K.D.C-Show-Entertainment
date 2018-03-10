@@ -1,5 +1,5 @@
 
-// in this version developer has capability of adding classes to the clones by selection, not by range to identify them when needed
+// in this version developer has capability of adding desired UI method functionalities to each object chosed seperately
     //capabilities:core cloning functionality
     //            : cloning as many items as needed
     //            : returns a length of all the clones
@@ -20,6 +20,11 @@
 
 var call = 0;
     jQuery.fn.extend({
+        hey:function(){
+            return
+        }
+    })
+    jQuery.fn.extend({
         adv_clone:function(michael){
             //jquery's cloning function does not work as intended, it thinks a call to more clones, is a call to the same cloned object, when it finally figures things out it is not smart enough to know not to clone the selected list. This method returns an array of how many times you wanted the object to be cloned, for further variation as you please
             
@@ -29,10 +34,7 @@ var call = 0;
                 
                 
                 
-                {
-                    $.each(function)
-                    console.log(UI)
-                }
+
                 //determining argument type
                 var $clone_count
                 if(typeof(michael) == "number"){
@@ -64,6 +66,7 @@ var call = 0;
                 
                 ////////////////////////////////////////////////////////////////
                 
+
                 
             
                 //replication init
@@ -89,7 +92,40 @@ var call = 0;
                     $clone_count -= 1;
                 }
                     
+                // determining UI type
+                {
+
                     
+                    var clone_UI = {};
+                    var widget_UI_selector = $(this).selector;
+                    console.log(widget_UI_selector)
+                    if(typeof(michael.UI) == "object"){
+                        
+                        michael.UI.forEach(function(UI,index){
+                            console.log("hit")
+                            // michael.UIC = UI;
+                            clone_UI[UI] = UI;
+                            $(widget_UI_selector)[Object.keys(clone_UI)[index]]()
+                            
+                        })
+                        
+                        
+
+                    }
+                    
+                    
+                    else{
+                        console.log(typeof(michael.UI))
+                        $(this.selector)[michael.UI]()
+                    }
+                    
+                    
+                    
+                }
+                ////////////////////////////////////////////////////////////////
+                // var clone_UI is an object, since jquery only went if the method name was coming from an object that is what i did
+                // var widget_UI_selector held the scope for the the clone objects becuase the scope for this was not going to survive in the forEach function, so it had to be external so jquery can know to whom to apply the UI methods
+                ///////////////////////////////////////////////////////////////
                 
                 
 
@@ -112,7 +148,11 @@ var call = 0;
                         });
                         
                     }
-                    return $(value)
+                    
+                    return $(value);
+                    
+
+                        
                 });
                     
                 ////////////////////////////////////////////////////////////////
@@ -122,6 +162,8 @@ var call = 0;
                 // for two copies you must equal call is two becuase it needs to refer to the clone clone as the second clone, its recusive, as there is a new last, thats why the first clone can clone
                 // same for one jquery is simply cloning the last copy of each so the first copy is okay
                 ////////////////////////////////////////////////////////////////
+                
+
         }
         
         
@@ -140,3 +182,5 @@ var addFnCounter = function(target){
 
 addFnCounter($().adv_clone);
     
+    
+	

@@ -233,6 +233,10 @@
                margin-left:1em;
                margin-top:-.5em;
             }
+            
+            #calendar.day_holder{
+                position:relative;
+            }
 
 /*contact us page            */
 
