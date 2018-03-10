@@ -1,5 +1,5 @@
 
-// in this version developer has capability of adding desired UI method functionalities to each object chosed seperately
+// in this version if adv_clone is called more than one times, it know to cut off the first copy as it had made too many clones
     //capabilities:core cloning functionality
     //            : cloning as many items as needed
     //            : returns a length of all the clones
@@ -133,6 +133,7 @@ var call = 0;
                 if(call == 1 ){
                     $(this.selector + ":first").remove()
                     console.log(call)
+                    call = 0;
                 }
                 return $.map($(this.selector + (":not(.delete)")),function(value,index){
                     if(michael.specifiers != undefined){

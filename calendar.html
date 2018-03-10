@@ -75,6 +75,21 @@
 
 
             var days = daysInMonth(new Date().getMonth(),new Date().getFullYear());
+            console.log(days)
+            
+            $("#calendar.day").css({
+                "z-index":"100",
+                "margin-bottom":"0"
+                
+            }).adv_clone({
+                items:days,
+                UI:["draggable","resizable"]
+            })
+            
+            $.map($("#calendar.day"),function(day,index){
+                $(day).append("<h2 class = 'monthdays' id = 'calendar' >" + (index + 1)  + "</h2>")
+                
+            })
             
             var calendar_adjustment = ($("#calendar.weekday").css({
                 "z-index":"100",
@@ -90,14 +105,7 @@
                 
             })
             
-            $("#calendar.day").css({
-                "z-index":"100",
-                "margin-bottom":"0"
-                
-            }).adv_clone({
-                items:days,
-                UI:["draggable","resizable"]
-            })
+
             
             console.log(calendar_adjustment)
             
@@ -113,7 +121,7 @@
             
             $("#calendar.canvas").pretty_print({
                 objects:$("#calendar.day"),
-                indent:"0px",
+                indent:[numberParse($("#calendar.day").css("width")) * day_of_week(new Date().getMonth(),new Date().getFullYear(),1),0],
                 x_spacing:"0px",
                 y_spacing:"0px",
                 
