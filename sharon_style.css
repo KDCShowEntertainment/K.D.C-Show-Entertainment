@@ -200,6 +200,23 @@
 
 
             }
+            
+            #calendar.day_info{
+                /*height:35em;*/
+                /*width:50em;*/
+                height:0em;
+                width:0em;
+                z-index:100;
+                display:none;
+                top:1%;
+            }
+            #calendar.monthdays {
+                color:red;
+                font-size:5em;
+                text-align:center;
+                margin-top:25%;
+                text-shadow:.05em .05em rgba(255,0,0,.7);
+            }
 
             h4#calendar.day{
                 color:red;

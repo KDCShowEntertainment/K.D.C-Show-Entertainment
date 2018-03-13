@@ -27,6 +27,7 @@
         <script>
 
             var weekday_set = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            
             $(document).ready(function() {
             var x_tab;
             var y_tab;
@@ -83,11 +84,31 @@
                 
             }).adv_clone({
                 items:days,
-                UI:["draggable","resizable"]
+                UI:["resizable"]
             })
             
+            
             $.map($("#calendar.day"),function(day,index){
-                $(day).append("<h2 class = 'monthdays' id = 'calendar' >" + (index + 1)  + "</h2>")
+                $(day).click(function(){
+                    $(".day_info").delay(1000).animate({
+                        height:"35em",
+                        width:"50em"
+                    },2000)
+                    .show()
+                    .appendTo($(".canvas"))
+                    .css({
+                        position:"absolute",
+                        top:"35%",
+                        left:"20%"
+                    })
+                    .draggable()
+                    
+                    
+                
+                
+                 }).append("<h1 class = 'monthdays' id = 'calendar' >" + (index + 1)  + "</h1>")
+                 
+                 
                 
             })
             
@@ -181,10 +202,10 @@
             // calendar_adjustment to make it look right, the weeday classes were moving it down because day_holder is relative so it was relative to the inital positions of the day class
             //what makes jquery annoying is that when you add things to it it does not regard how it affect the atmosphere is gets added to, you should make something that controls the positions of objects in a webpage dimensions will definietely be too much for u something new altogether
             
-            // readjustting the days position on the page
+            // readjustting the days info position on the page
             
             {
-
+                
             }
             /////////////////////////////////////////////////////////////////////////////
             //
@@ -212,6 +233,12 @@
                 <div class = "day" ></div>
             </div>
 
+            <div class = "day_info well">
+                <h1></h1>
+                <img src = ''/>
+                <h3></h3>
+                
+            </div>
 
 
 
