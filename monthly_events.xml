@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/css" href=""?>
+<monthly_events>
+    
+    <date>
+        <header_event>
+            
+            A snowtime show
+        </header_event>
+        
+        
+        <picture>
+            <src>./michael_bio.JPG</src>
+        </picture>
+    
+        <event_info>
+            So my aunt wrote a story about snow
+        </event_info>
+    </date>
+    
+        <date>
+        <header_event>
+            
+            Summer in the Winter
+        </header_event>
+        
+        
+        <picture>
+            <src>./michael_bio.JPG</src>
+        </picture>
+    
+        <event_info>
+            So my aunt made a song about snow
+        </event_info>
+    </date>
+
+    <date>
+        <header_event>
+            
+            Control of a pipeline
+        </header_event>
+        
+        
+        <picture>
+            <src>./michael_bio.JPG</src>
+        </picture>
+    
+        <event_info>
+            So my aunt works in a hospital
+        </event_info>
+    </date>
+    
+    
+</monthly_events>

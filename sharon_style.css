@@ -207,7 +207,7 @@
                 height:0em;
                 width:0em;
                 z-index:100;
-                display:none;
+                /*display:none;*/
                 top:1%;
             }
             #calendar.monthdays {

@@ -27,6 +27,17 @@
         <script>
 
             var weekday_set = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            if (window.XMLHttpRequest)
+              {// code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();
+              }
+            else
+              {// code for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+              }
+            // xmlhttp.addEventListener("load", reqListener);
+            var xmlDoc;
+            var xml_index;
             
             $(document).ready(function() {
             var x_tab;
@@ -89,25 +100,97 @@
             
             
             $.map($("#calendar.day"),function(day,index){
-                $(day).click(function(){
-                    $(".day_info").delay(1000).animate({
-                        height:"35em",
-                        width:"50em"
-                    },2000)
-                    .show()
-                    .appendTo($(".canvas"))
+                $(day).click(function(event){
+                    event.preventDefault();
+                    console.log(index)
+                    $(".day_info").appendTo($(".canvas"))
                     .css({
                         position:"absolute",
                         top:"35%",
-                        left:"20%"
+                        left:"20%",
+                        opacity:"0"
                     })
-                    .draggable()
+                    .stop(true).delay(1000).animate({
+                        height:"35em",
+                        width:"50em",
+                        opacity:"1"
+                    },2000)
                     
+                    $(".day_info > *:not(h1)").show()
+                    
+                    
+                     if(index == 2 || index == 12 || index == 22){
+                        
+                        if(index == 2){
+                            xml_index = 0
+                        }
+    
+                        if(index == 12){
+                            xml_index = 1
+                        }
+    
+                        if(index == 22){
+                            xml_index = 2
+                        }
+                        
+                        console.log("trying to do xml")
+                                                    
+                        xmlhttp.open("GET","./monthly_events.xml");
+                        xmlhttp.responseType = 'document';
+                        xmlhttp.overrideMimeType('text/xml');
+                        xmlhttp.onload = function () {
+                          if (xmlhttp.readyState === xmlhttp.DONE) {
+                            if (xmlhttp.status === 200) {
+                              console.log(xmlhttp.response);
+                              console.log(xmlhttp.responseXML);
+                              xmlDoc = xmlhttp.responseXML;
+                              console.log(xmlDoc);
+                            //   console.log(xmlDoc.getElementsByTagName("date")[0].childNodes[5].firstChild)
+                              //there seems to be a duplicate text node for every child node in the reference day
+                            //   xmlDoc.getElementsByTagName("third")[0].textContent
+                            $(".day_info >h1").text(xmlDoc.getElementsByTagName("date")[xml_index].childNodes[1].firstChild.textContent);
+                            $(".day_info > img").attr("src",xmlDoc.getElementsByTagName("date")[xml_index].childNodes[1].firstChild.textContent);
+                            $(".day_info > h3").text(xmlDoc.getElementsByTagName("date")[xml_index].childNodes[5].firstChild.textContent);
+                            // $(".bio_resize > h1").attr("style",xmlDoc.getElementsByTagName("style")[0].childNodes[0].nodeValue);
+                        
+                              
+                            }
+                          }
+                        };
+                        xmlhttp.send(null);
+                    }
+                    
+                     else{
+                         $(".day_info > *:not(h1)").hide()
+        
+                        $(".day_info >h1").css({
+                            opacity:"0"
+                        }).text("Nothing available for the " + (index+1)+"th")
+                        .animate({
+                            opacity:"1"
+                        },4000)
+                     }
                     
                 
                 
                  }).append("<h1 class = 'monthdays' id = 'calendar' >" + (index + 1)  + "</h1>")
                  
+
+
+                
+                $(".day_info").click(function (event) {
+                    event.preventDefault();
+                    
+                    $(this).animate({
+                        height: "0em",
+                        width: "0em",
+                        opacity:"0"
+                    },2000)
+
+                   
+                })
+                
+                
                  
                 
             })
